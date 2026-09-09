@@ -1,0 +1,434 @@
+[
+  {
+    "code": 24,
+    "name": "Angola",
+    "region": "africa",
+    "url": "https://www.msf.org/angola"
+  },
+  {
+    "code": 854,
+    "name": "Burkina Faso",
+    "region": "africa",
+    "url": "https://www.msf.org/burkina-faso"
+  },
+  {
+    "code": 108,
+    "name": "Burundi",
+    "region": "africa",
+    "url": "https://www.msf.org/burundi"
+  },
+  {
+    "code": 120,
+    "name": "Cameroon",
+    "region": "africa",
+    "url": "https://www.msf.org/cameroon"
+  },
+  {
+    "code": 140,
+    "name": "Central African Republic",
+    "region": "africa",
+    "url": "https://www.msf.org/central-african-republic-car"
+  },
+  {
+    "code": 148,
+    "name": "Chad",
+    "region": "africa",
+    "url": "https://www.msf.org/chad"
+  },
+  {
+    "code": 180,
+    "name": "Democratic Republic of Congo",
+    "region": "africa",
+    "url": "https://www.msf.org/democratic-republic-congo-drc"
+  },
+  {
+    "code": 748,
+    "name": "Eswatini",
+    "region": "africa",
+    "url": "https://www.msf.org/eswatini"
+  },
+  {
+    "code": 231,
+    "name": "Ethiopia",
+    "region": "africa",
+    "url": "https://www.msf.org/ethiopia"
+  },
+  {
+    "code": 324,
+    "name": "Guinea",
+    "region": "africa",
+    "url": "https://www.msf.org/guinea"
+  },
+  {
+    "code": 624,
+    "name": "Guinea-Bissau",
+    "region": "africa",
+    "url": "https://www.msf.org/guinea-bissau"
+  },
+  {
+    "code": 404,
+    "name": "Kenya",
+    "region": "africa",
+    "url": "https://www.msf.org/kenya"
+  },
+  {
+    "code": 426,
+    "name": "Lesotho",
+    "region": "africa",
+    "url": "https://www.msf.org/lesotho"
+  },
+  {
+    "code": 430,
+    "name": "Liberia",
+    "region": "africa",
+    "url": "https://www.msf.org/liberia"
+  },
+  {
+    "code": 450,
+    "name": "Madagascar",
+    "region": "africa",
+    "url": "https://www.msf.org/madagascar"
+  },
+  {
+    "code": 454,
+    "name": "Malawi",
+    "region": "africa",
+    "url": "https://www.msf.org/malawi"
+  },
+  {
+    "code": 466,
+    "name": "Mali",
+    "region": "africa",
+    "url": "https://www.msf.org/mali"
+  },
+  {
+    "code": 508,
+    "name": "Mozambique",
+    "region": "africa",
+    "url": "https://www.msf.org/mozambique"
+  },
+  {
+    "code": 562,
+    "name": "Niger",
+    "region": "africa",
+    "url": "https://www.msf.org/niger"
+  },
+  {
+    "code": 566,
+    "name": "Nigeria",
+    "region": "africa",
+    "url": "https://www.msf.org/nigeria"
+  },
+  {
+    "code": 694,
+    "name": "Sierra Leone",
+    "region": "africa",
+    "url": "https://www.msf.org/sierra-leone"
+  },
+  {
+    "code": 706,
+    "name": "Somalia",
+    "region": "africa",
+    "url": "https://www.msf.org/somalia"
+  },
+  {
+    "code": 710,
+    "name": "South Africa",
+    "region": "africa",
+    "url": "https://www.msf.org/south-africa"
+  },
+  {
+    "code": 728,
+    "name": "South Sudan",
+    "region": "africa",
+    "url": "https://www.msf.org/south-sudan"
+  },
+  {
+    "code": 729,
+    "name": "Sudan",
+    "region": "africa",
+    "url": "https://www.msf.org/sudan"
+  },
+  {
+    "code": 834,
+    "name": "Tanzania",
+    "region": "africa",
+    "url": "https://www.msf.org/tanzania"
+  },
+  {
+    "code": 800,
+    "name": "Uganda",
+    "region": "africa",
+    "url": "https://www.msf.org/uganda"
+  },
+  {
+    "code": 894,
+    "name": "Zambia",
+    "region": "africa",
+    "url": "https://www.msf.org/zambia"
+  },
+  {
+    "code": 716,
+    "name": "Zimbabwe",
+    "region": "africa",
+    "url": "https://www.msf.org/zimbabwe"
+  },
+  {
+    "code": 818,
+    "name": "Egypt",
+    "region": "mena",
+    "url": "https://www.msf.org/egypt"
+  },
+  {
+    "code": 364,
+    "name": "Iran",
+    "region": "mena",
+    "url": "https://www.msf.org/iran"
+  },
+  {
+    "code": 368,
+    "name": "Iraq",
+    "region": "mena",
+    "url": "https://www.msf.org/iraq"
+  },
+  {
+    "code": 400,
+    "name": "Jordan",
+    "region": "mena",
+    "url": "https://www.msf.org/jordan"
+  },
+  {
+    "code": 422,
+    "name": "Lebanon",
+    "region": "mena",
+    "url": "https://www.msf.org/lebanon"
+  },
+  {
+    "code": 434,
+    "name": "Libya",
+    "region": "mena",
+    "url": "https://www.msf.org/libya"
+  },
+  {
+    "code": 504,
+    "name": "Morocco",
+    "region": "mena",
+    "url": "https://www.msf.org/morocco"
+  },
+  {
+    "code": 275,
+    "name": "Palestine",
+    "region": "mena",
+    "url": "https://www.msf.org/palestine"
+  },
+  {
+    "code": 760,
+    "name": "Syria",
+    "region": "mena",
+    "url": "https://www.msf.org/syria"
+  },
+  {
+    "code": 887,
+    "name": "Yemen",
+    "region": "mena",
+    "url": "https://www.msf.org/yemen"
+  },
+  {
+    "code": 4,
+    "name": "Afghanistan",
+    "region": "asia",
+    "url": "https://www.msf.org/afghanistan"
+  },
+  {
+    "code": 50,
+    "name": "Bangladesh",
+    "region": "asia",
+    "url": "https://www.msf.org/bangladesh"
+  },
+  {
+    "code": 116,
+    "name": "Cambodia",
+    "region": "asia",
+    "url": "https://www.msf.org/cambodia"
+  },
+  {
+    "code": 356,
+    "name": "India",
+    "region": "asia",
+    "url": "https://www.msf.org/india"
+  },
+  {
+    "code": 360,
+    "name": "Indonesia",
+    "region": "asia",
+    "url": "https://www.msf.org/indonesia"
+  },
+  {
+    "code": 458,
+    "name": "Malaysia",
+    "region": "asia",
+    "url": "https://www.msf.org/malaysia"
+  },
+  {
+    "code": 104,
+    "name": "Myanmar",
+    "region": "asia",
+    "url": "https://www.msf.org/myanmar"
+  },
+  {
+    "code": 586,
+    "name": "Pakistan",
+    "region": "asia",
+    "url": "https://www.msf.org/pakistan"
+  },
+  {
+    "code": 598,
+    "name": "Papua New Guinea",
+    "region": "asia",
+    "url": "https://www.msf.org/papua-new-guinea"
+  },
+  {
+    "code": 608,
+    "name": "Philippines",
+    "region": "asia",
+    "url": "https://www.msf.org/philippines"
+  },
+  {
+    "code": 764,
+    "name": "Thailand",
+    "region": "asia",
+    "url": "https://www.msf.org/thailand"
+  },
+  {
+    "code": 51,
+    "name": "Armenia",
+    "region": "europe",
+    "url": "https://www.msf.org/armenia"
+  },
+  {
+    "code": 56,
+    "name": "Belgium",
+    "region": "europe",
+    "url": "https://www.msf.org/belgium"
+  },
+  {
+    "code": 250,
+    "name": "France",
+    "region": "europe",
+    "url": "https://www.msf.org/france"
+  },
+  {
+    "code": 300,
+    "name": "Greece",
+    "region": "europe",
+    "url": "https://www.msf.org/greece"
+  },
+  {
+    "code": 380,
+    "name": "Italy",
+    "region": "europe",
+    "url": "https://www.msf.org/italy"
+  },
+  {
+    "code": 417,
+    "name": "Kyrgyzstan",
+    "region": "europe",
+    "url": "https://www.msf.org/kyrgyzstan"
+  },
+  {
+    "code": 688,
+    "name": "Serbia",
+    "region": "europe",
+    "url": "https://www.msf.org/serbia"
+  },
+  {
+    "code": 724,
+    "name": "Spain",
+    "region": "europe",
+    "url": "https://www.msf.org/spain"
+  },
+  {
+    "code": 762,
+    "name": "Tajikistan",
+    "region": "europe",
+    "url": "https://www.msf.org/tajikistan"
+  },
+  {
+    "code": 792,
+    "name": "T\u00fcrkiye",
+    "region": "europe",
+    "url": "https://www.msf.org/turkiye"
+  },
+  {
+    "code": 804,
+    "name": "Ukraine",
+    "region": "europe",
+    "url": "https://www.msf.org/ukraine"
+  },
+  {
+    "code": 860,
+    "name": "Uzbekistan",
+    "region": "europe",
+    "url": "https://www.msf.org/uzbekistan"
+  },
+  {
+    "code": 68,
+    "name": "Bolivia",
+    "region": "americas",
+    "url": "https://www.msf.org/bolivia"
+  },
+  {
+    "code": 76,
+    "name": "Brazil",
+    "region": "americas",
+    "url": "https://www.msf.org/brazil"
+  },
+  {
+    "code": 170,
+    "name": "Colombia",
+    "region": "americas",
+    "url": "https://www.msf.org/colombia"
+  },
+  {
+    "code": 222,
+    "name": "El Salvador",
+    "region": "americas",
+    "url": "https://www.msf.org/el-salvador"
+  },
+  {
+    "code": 320,
+    "name": "Guatemala",
+    "region": "americas",
+    "url": "https://www.msf.org/guatemala"
+  },
+  {
+    "code": 332,
+    "name": "Haiti",
+    "region": "americas",
+    "url": "https://www.msf.org/haiti"
+  },
+  {
+    "code": 340,
+    "name": "Honduras",
+    "region": "americas",
+    "url": "https://www.msf.org/honduras"
+  },
+  {
+    "code": 484,
+    "name": "Mexico",
+    "region": "americas",
+    "url": "https://www.msf.org/mexico"
+  },
+  {
+    "code": 604,
+    "name": "Peru",
+    "region": "americas",
+    "url": "https://www.msf.org/peru"
+  },
+  {
+    "code": 862,
+    "name": "Venezuela",
+    "region": "americas",
+    "url": "https://www.msf.org/venezuela"
+  }
+]
