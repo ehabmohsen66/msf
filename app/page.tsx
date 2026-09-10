@@ -1,25 +1,37 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import WorldMap from '@/components/world-map';
-import { ArrowRight, ArrowDown, Menu, Search, Globe } from 'lucide-react';
+import { ArrowRight, ArrowDown, ChevronLeft, ChevronRight, Menu, Search, Globe } from 'lucide-react';
 import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetDescription } from '@/components/ui/sheet';
 const base = 'https://msf-lebanon.org';
 const nav = [['About us','/about-us/'],['Our work','/what-we-do/msf-in-leb/'],['Medical topics','/medical-topics/'],['News & stories','/news-events/news-stories/']];
-const heroLink = '/news/bekaa-where-lives-have-been-upheaved-in-the-shadow-of-war/';
+const heroSlides = [
+ {place:'Lebanon · Bekaa',type:'Voices from the field',date:'20 August 2026',title:<>Lives upheaved<br/>in the shadow<br/>of war</>,summary:'In the Bekaa, people forced from their homes face the lasting impact of conflict.',url:'/news/bekaa-where-lives-have-been-upheaved-in-the-shadow-of-war/',image:'/assets/hero.jpg',alt:'An MSF worker at a hospital in Lebanon',position:'center 45%'},
+ {place:'Lebanon · South',type:'Statement',date:'7 September 2026',title:<>Water is life.<br/>Southern Lebanon<br/>must not be punished</>,summary:'Damage to water infrastructure is putting communities at greater risk and limiting access to essential services.',url:'/news/people-of-southern-lebanon-must-not-be-punished/',image:'/assets/news-1.jpg',alt:'Damaged water infrastructure in southern Lebanon',position:'center'},
+ {place:'Palestine · Hebron',type:'Press release',date:'21 August 2026',title:<>Restrictions drive<br/>medical needs<br/>in Hebron</>,summary:'Violence and movement restrictions continue to prevent people from reaching essential medical care.',url:'/news/escalating-violence-and-movement-restrictions-continue-to-drive-medical-needs-in-hebron/',image:'/assets/news-3.jpg',alt:'A roadblock in Hebron',position:'center'}
+];
 const stories = [
  {tag:'Lebanon',title:'Water is life: People of Southern Lebanon must not be punished',date:'7 September 2026',url:'/news/people-of-southern-lebanon-must-not-be-punished/',image:'/assets/news-1.jpg'},
  {tag:'Yemen',title:'Malnourished children are reaching hospitals in critical condition in Yemen',date:'8 September 2026',url:'/news/malnourished-children-in-yemen/',image:'/assets/news-2.jpg'},
  {tag:'Palestine',title:'Escalating violence and movement restrictions continue to drive medical needs in Hebron',date:'21 August 2026',url:'/news/escalating-violence-and-movement-restrictions-continue-to-drive-medical-needs-in-hebron/',image:'/assets/news-3.jpg'}
 ];
-export default function Home(){return <>
+export default function Home(){
+const [slide,setSlide]=useState(0);
+const [paused,setPaused]=useState(false);
+useEffect(()=>{if(paused)return;const timer=window.setInterval(()=>setSlide(current=>(current+1)%heroSlides.length),7000);return()=>window.clearInterval(timer)},[paused]);
+const activeSlide=heroSlides[slide];
+const moveSlide=(direction:number)=>{setPaused(true);setSlide(current=>(current+direction+heroSlides.length)%heroSlides.length)};
+return <>
 <a href="#main" className="skip">Skip to content</a>
-<section className="hero">
-<img className="hero-photo" src="/assets/hero.jpg" alt="MSF's work with communities affected by displacement in the Bekaa, Lebanon" fetchPriority="high"/>
+<section className="hero" aria-roledescription="carousel" aria-label="Featured stories" onMouseEnter={()=>setPaused(true)} onMouseLeave={()=>setPaused(false)} onFocus={()=>setPaused(true)} onBlur={event=>{if(!event.currentTarget.contains(event.relatedTarget))setPaused(false)}}>
+<div className="hero-images" aria-live="off">{heroSlides.map((item,index)=><img key={item.image} className={`hero-photo ${index===slide?'is-active':''}`} src={item.image} alt={index===slide?item.alt:''} style={{objectPosition:item.position}} fetchPriority={index===0?'high':'auto'} aria-hidden={index!==slide}/>)}</div>
 <header className="masthead">
 <div className="utility"><span className="edition">MÉDECINS SANS FRONTIÈRES · LEBANON</span><div><a href={base+'/work-with-us/'}>Work with MSF</a><a href="https://www.msf.org">MSF worldwide <Globe size={14}/></a><a href={base+'/ar/home-ar/'} lang="ar" dir="rtl">العربية</a></div></div>
 <div className="main-nav"><a href="#" className="brand" aria-label="MSF Lebanon home"><img src="/assets/logo.svg" alt="Médecins Sans Frontières — أطباء بلا حدود"/></a><nav aria-label="Main navigation">{nav.map(([label,url])=><a key={label} href={base+url}>{label}</a>)}</nav><a className="search" href={base+'/?s='} aria-label="Search MSF Lebanon"><Search size={23}/></a><a className="pill nav-contact" href={base+'/contact-us/'}>Contact us</a><div className="mobile-menu"><Sheet><SheetTrigger aria-label="Open navigation"><Menu size={26}/></SheetTrigger><SheetContent><SheetHeader><SheetTitle>MSF Lebanon</SheetTitle><SheetDescription>Explore our work and stories.</SheetDescription></SheetHeader><nav className="mobile-links" aria-label="Mobile navigation">{nav.map(([label,url])=><a key={label} href={base+url}>{label}<ArrowRight size={18}/></a>)}<a href={base+'/work-with-us/'}>Work with us</a><a href={base+'/contact-us/'}>Contact us</a><a href={base+'/ar/home-ar/'} lang="ar">العربية</a></nav></SheetContent></Sheet></div></div>
 </header>
-<main id="main" className="hero-story"><div><p className="eyebrow light"><span/>Lebanon · Bekaa</p><h1>Lives upheaved<br/>in the shadow<br/>of war</h1></div><div className="hero-summary"><p className="story-meta">Voices from the field <span/>20 August 2026</p><p>In the Bekaa, people forced from their homes face the lasting impact of conflict.</p><a className="pill" href={base+heroLink}>Read the story <ArrowRight size={19}/></a></div></main>
+<main id="main" className="hero-story" key={slide}><div><p className="eyebrow light"><span/>{activeSlide.place}</p><h1>{activeSlide.title}</h1></div><div className="hero-summary"><p className="story-meta">{activeSlide.type} <span/>{activeSlide.date}</p><p>{activeSlide.summary}</p><a className="pill" href={base+activeSlide.url}>Read the story <ArrowRight size={19}/></a></div></main>
+<div className="hero-slider-controls"><button type="button" onClick={()=>moveSlide(-1)} aria-label="Previous featured story"><ChevronLeft/></button><div className="hero-dots" role="group" aria-label="Choose featured story">{heroSlides.map((item,index)=><button type="button" key={item.image} className={index===slide?'is-active':''} onClick={()=>{setPaused(true);setSlide(index)}} aria-label={`Show slide ${index+1}: ${item.place}`} aria-current={index===slide?'true':undefined}/>)}</div><span aria-live="polite">0{slide+1} / 0{heroSlides.length}</span><button type="button" onClick={()=>moveSlide(1)} aria-label="Next featured story"><ChevronRight/></button></div>
 <div className="hero-bottom"><span>Independent. Impartial. Neutral.</span><a href="#latest">Explore our stories <ArrowDown size={17}/></a></div>
 </section>
 <section className="about-sections wrap" id="about-msf" aria-label="About MSF">
