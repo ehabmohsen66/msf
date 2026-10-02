@@ -1014,3 +1014,21 @@ a[lang=ar] {
   .topic-panel-reveal-inner { min-width: 0; }
   .topic-panel-text { font-size: 17px; }
 }
+
+/* Work with MSF: a small running man from the logo leads the eyebrow. */
+.careers-eyebrow-runner {
+  width: 34px;
+  height: 26px;
+  flex: 0 0 auto;
+}
+.careers-eyebrow-runner path { fill: var(--red); }
+
+/* Tighter rhythm between Medical topics and Work with MSF */
+.topics-section { padding-bottom: 84px; }
+.careers-section { padding-block: 80px 88px; }
+.careers-intro { padding-bottom: 44px; margin-bottom: 44px; }
+@media (max-width: 800px) {
+  .topics-section { padding-bottom: 56px; }
+  .careers-section { padding-block: 56px 60px; }
+  .careers-intro { padding-bottom: 32px; margin-bottom: 32px; }
+}

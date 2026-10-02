@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from 'react';
 import WorldMap from '@/components/world-map';
 import ActivityReport from '@/components/activity-report';
 import MedicalTopics from '@/components/medical-topics';
+import CareersIntro from '@/components/careers-intro';
 import { ArrowRight, ArrowDown, ChevronLeft, ChevronRight, Menu, Search, Globe, X, Plus, MapPin, Plane } from 'lucide-react';
 import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetDescription } from '@/components/ui/sheet';
 const base = 'https://msf-lebanon.org';
@@ -421,24 +422,7 @@ return <>
 <MedicalTopics/>
 <section className="careers-section" id="work-with-msf" aria-labelledby="careers-heading">
   <div className="wrap">
-    <div className="careers-intro">
-      <div>
-        <p className="eyebrow careers-eyebrow"><span aria-hidden="true"></span>Work with MSF</p>
-        <h2 id="careers-heading" className="careers-title">Your skills<br/>can save lives.</h2>
-      </div>
-      <div className="careers-intro-copy">
-        <p>From hospital wards to emergency field hospitals, medical and non-medical professionals work side by side to deliver independent healthcare where it is needed most.</p>
-        <p className="careers-roles-label">We recruit</p>
-        <ul className="careers-roles">
-          <li>Doctors &amp; surgeons</li>
-          <li>Nurses &amp; midwives</li>
-          <li>Logisticians</li>
-          <li>Pharmacists</li>
-          <li>Mental health</li>
-          <li>Administrators</li>
-        </ul>
-      </div>
-    </div>
+    <CareersIntro/>
 
     <div className="careers-paths">
       <a className="career-path" href={base + '/work-with-us/local-vacancies/'}>
