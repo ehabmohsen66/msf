@@ -37,7 +37,7 @@ export default function AboutTimeline() {
 
       <div className="era-panel" role="tabpanel" id={`era-panel-${active}`} aria-labelledby={`era-tab-${active}`} key={era.label}>
         <figure className="era-image">
-          <img src={era.image} alt={era.alt} width={652} height={412} loading="lazy" />
+          <img src={era.image} alt={era.alt} width={1304} height={824} loading="lazy" />
           <figcaption>{era.label}</figcaption>
         </figure>
         <ol className="timeline">

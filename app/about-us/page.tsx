@@ -86,7 +86,7 @@ export default function AboutUs() {
         {/* 01 MSF History */}
         <section className="about-intro wrap" id="msf-history" aria-labelledby="msf-history-heading">
           <figure className="about-intro-image">
-            <img src={whoWeAre.image} alt="An MSF team raises the MSF flag in the field." width={652} height={412} loading="lazy" />
+            <img src={whoWeAre.image} alt="An MSF team raises the MSF flag in the field." width={1304} height={824} loading="lazy" />
           </figure>
           <div className="about-intro-copy">
             <p className="eyebrow">01 · About us</p>
@@ -195,7 +195,7 @@ export default function AboutUs() {
         {/* 06 MSF in the Field */}
         <section className="about-cards-section" id="msf-in-the-field" aria-labelledby="field-heading">
           <figure className="field-banner">
-            <img src={fieldBanner.image} alt={fieldBanner.alt} width={1440} height={466} loading="lazy" />
+            <img src={fieldBanner.image} alt={fieldBanner.alt} width={2880} height={932} loading="lazy" />
           </figure>
           <div className="wrap">
             <div className="section-heading">

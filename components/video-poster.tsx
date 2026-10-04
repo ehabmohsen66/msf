@@ -18,7 +18,7 @@ export default function VideoPoster({ youtubeId, title, poster }: { youtubeId: s
         />
       ) : (
         <button type="button" onClick={() => setPlaying(true)} aria-label={`Play video: ${title}`}>
-          <img src={poster} alt="" width={1280} height={720} loading="lazy" />
+          <img src={poster} alt="" width={1920} height={1080} loading="lazy" />
           <span className="video-play" aria-hidden="true"><Play size={26} fill="currentColor" /></span>
           <span className="video-title">{title}</span>
         </button>
