@@ -5,47 +5,11 @@ import WorldMap from '@/components/world-map';
 import ActivityReport from '@/components/activity-report';
 import MedicalTopics from '@/components/medical-topics';
 import CareersIntro from '@/components/careers-intro';
-import { ArrowRight, ArrowDown, ChevronLeft, ChevronRight, ChevronDown, Menu, Search, Globe, X, Plus, MapPin, Plane } from 'lucide-react';
-import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetDescription } from '@/components/ui/sheet';
-const base = 'https://msf-lebanon.org';
-const navMenu = [
-  {
-    label: 'About us',
-    url: '/about-us/',
-    subItems: [
-      { label: 'MSF History', url: '/about-us/msf-history/' },
-      { label: 'MSF in Lebanon', url: '/what-we-do/msf-in-leb/' },
-      { label: 'MSF in the Field', url: '/what-we-do/msf-in-the-field/' },
-    ],
-  },
-  {
-    label: 'Work with us',
-    url: '/work-with-us/',
-    subItems: [
-      { label: 'Local Vacancies', url: '/work-with-us/local-vacancies/' },
-      { label: 'Overseas Vacancies', url: '/work-with-us/overseas-vacancies/' },
-      { label: 'Life in the field', url: '/work-with-us/life-in-the-field/' },
-    ],
-  },
-  {
-    label: 'News & events',
-    url: '/news-events/',
-    subItems: [
-      { label: 'News & Stories', url: '/news-events/news-stories/' },
-      { label: 'Research & Publications', url: '/news-events/research-publications/' },
-      { label: 'Events', url: '/news-events/events/' },
-    ],
-  },
-  {
-    label: 'Medical topics',
-    url: '/medical-topics/',
-    subItems: [
-      { label: 'Antimicrobial Resistance (AMR)', url: '/medical-topics/antimicrobial-resistance-amr/' },
-      { label: 'Insulin Access Resource', url: '/medical-topics/msf-lebanon-insulin-access-resource/' },
-      { label: 'World Patient Safety Day', url: '/medical-topics/world-patient-safety-day/' },
-    ],
-  },
-];
+import SiteHeader from '@/components/site-header';
+import SiteFooter from '@/components/site-footer';
+import CountUpNumber from '@/components/count-up';
+import { base } from '@/lib/nav';
+import { ArrowRight, ArrowDown, ChevronLeft, ChevronRight, MapPin, Plane } from 'lucide-react';
 const heroSlides = [
  {place:'Lebanon · Bekaa',type:'Voices from the field',date:'20 August 2026',title:<>Lives upheaved<br/>in the shadow<br/>of war</>,summary:'In the Bekaa, people forced from their homes face the lasting impact of conflict.',url:'/news/bekaa-where-lives-have-been-upheaved-in-the-shadow-of-war/',image:'/assets/hero.jpg',alt:'An MSF worker at a hospital in Lebanon',position:'center top'},
  {place:'Lebanon · South',type:'Statement',date:'7 September 2026',title:<>Water is life.<br/>Southern Lebanon<br/>must not be punished</>,summary:'Damage to water infrastructure is putting communities at greater risk and limiting access to essential services.',url:'/news/people-of-southern-lebanon-must-not-be-punished/',image:'/assets/news-1.jpg',alt:'Damaged water infrastructure in southern Lebanon',position:'center'},
@@ -60,61 +24,6 @@ const stories = [
  {tag:'Syria',title:'Cross-border medical teams deliver vital healthcare across northwest Syria',date:'19 July 2026',url:'/news/syria-cross-border-medical-response/',image:'/assets/figure-consultations.jpg'},
  {tag:'Afghanistan',title:'Ensuring safe maternal and neonatal care in remote provinces',date:'30 June 2026',url:'/news/afghanistan-maternal-healthcare-khost/',image:'/assets/figure-births.jpg'}
 ];
-function CountUpNumber({ targetValue, duration = 2000 }: { targetValue: number; duration?: number }) {
-  const [count, setCount] = useState(0);
-  const [hasStarted, setHasStarted] = useState(false);
-  const elementRef = useRef<HTMLParagraphElement>(null);
-
-  useEffect(() => {
-    const el = elementRef.current;
-    if (!el) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setHasStarted(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.25 }
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!hasStarted) return;
-
-    let startTime: number | null = null;
-    let animationFrameId: number;
-
-    const step = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / duration, 1);
-      // easeOutExpo for dramatic decelerating count-up effect
-      const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-      const current = Math.floor(easeProgress * targetValue);
-      setCount(current);
-
-      if (progress < 1) {
-        animationFrameId = requestAnimationFrame(step);
-      } else {
-        setCount(targetValue);
-      }
-    };
-
-    animationFrameId = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(animationFrameId);
-  }, [hasStarted, targetValue, duration]);
-
-  return (
-    <p className="figure-value" ref={elementRef}>
-      {count.toLocaleString()}
-    </p>
-  );
-}
-
 const figuresData = [
   {
     image: '/assets/figure-consultations.jpg',
@@ -139,11 +48,6 @@ const figuresData = [
 export default function Home(){
 const [slide,setSlide]=useState(0);
 const sliderTimerRef=useRef<number|null>(null);
-const [searchOpen,setSearchOpen]=useState(false);
-const [searchQuery,setSearchQuery]=useState('');
-const [openMobileGroup,setOpenMobileGroup]=useState<string|null>(null);
-const searchInputRef=useRef<HTMLInputElement>(null);
-const searchContainerRef=useRef<HTMLDivElement>(null);
 
 const storiesContainerRef=useRef<HTMLDivElement>(null);
 const [canScrollLeft,setCanScrollLeft]=useState(false);
@@ -196,50 +100,6 @@ useEffect(()=>{
   };
 },[]);
 
-useEffect(()=>{
-  if(searchOpen){
-    searchInputRef.current?.focus();
-  }
-},[searchOpen]);
-
-useEffect(()=>{
-  if(!searchOpen||searchQuery.trim()!=='')return;
-  const idleTimer=window.setTimeout(()=>{
-    setSearchOpen(false);
-    setSearchQuery('');
-  },5000);
-  return()=>window.clearTimeout(idleTimer);
-},[searchOpen,searchQuery]);
-
-useEffect(()=>{
-  function handleClickOutside(e:MouseEvent){
-    if(searchContainerRef.current&&!searchContainerRef.current.contains(e.target as Node)){
-      setSearchOpen(false);
-    }
-  }
-  function handleKeyDown(e:KeyboardEvent){
-    if(e.key==='Escape'){
-      setSearchOpen(false);
-    }
-  }
-  if(searchOpen){
-    document.addEventListener('mousedown',handleClickOutside);
-    document.addEventListener('keydown',handleKeyDown);
-  }
-  return()=>{
-    document.removeEventListener('mousedown',handleClickOutside);
-    document.removeEventListener('keydown',handleKeyDown);
-  };
-},[searchOpen]);
-
-const handleSearchSubmit=(e:React.FormEvent)=>{
-  e.preventDefault();
-  if(searchQuery.trim()){
-    window.location.href=`${base}/?s=${encodeURIComponent(searchQuery.trim())}`;
-  }else{
-    searchInputRef.current?.focus();
-  }
-};
 
 const activeSlide=heroSlides[slide];
 const moveSlide=(direction:number)=>{
@@ -254,134 +114,7 @@ return <>
 <a href="#main" className="skip">Skip to content</a>
 <section className="hero" aria-roledescription="carousel" aria-label="Featured stories">
 <div className="hero-images" aria-live="off">{heroSlides.map((item,index)=><img key={item.image} className={`hero-photo ${index===slide?'is-active':''}`} src={item.image} alt={index===slide?item.alt:''} style={{objectPosition:item.position}} fetchPriority={index===0?'high':'auto'} aria-hidden={index!==slide}/>)}</div>
-<header className="masthead">
-<div className="utility"><span className="edition">MÉDECINS SANS FRONTIÈRES · LEBANON</span><div><a href={base+'/work-with-us/'}>Work with MSF</a><a href="https://www.msf.org">MSF worldwide <Globe size={14}/></a><a href={base+'/ar/home-ar/'} lang="ar" dir="rtl">العربية</a></div></div>
-<div className="main-nav">
-  <a href="#" className="brand" aria-label="MSF Lebanon home"><img src="/assets/logo.svg" alt="Médecins Sans Frontières — أطباء بلا حدود"/></a>
-  <nav aria-label="Main navigation">
-    {navMenu.map(item => (
-      <div key={item.label} className="nav-item">
-        <a href={base + item.url} className="nav-item-link">
-          {item.label}
-          <ChevronDown size={14} className="nav-chevron" aria-hidden="true" />
-        </a>
-        <div className="nav-dropdown" role="menu" aria-label={`${item.label} submenu`}>
-          {item.subItems.map(sub => (
-            <a key={sub.label} href={base + sub.url} role="menuitem">
-              {sub.label}
-            </a>
-          ))}
-        </div>
-      </div>
-    ))}
-  </nav>
-  <div className={`nav-search ${searchOpen?'is-expanded':''}`} ref={searchContainerRef}>
-    <form className="nav-search-form" onSubmit={handleSearchSubmit} role="search">
-      <button
-        type={searchOpen?'submit':'button'}
-        className="nav-search-toggle"
-        onClick={()=>{
-          if(!searchOpen){
-            setSearchOpen(true);
-          }
-        }}
-        aria-label={searchOpen?'Submit search':'Open search'}
-        aria-expanded={searchOpen}
-      >
-        <Search size={22} aria-hidden="true"/>
-      </button>
-      <input
-        ref={searchInputRef}
-        type="search"
-        className="nav-search-input"
-        placeholder="Search MSF Lebanon..."
-        value={searchQuery}
-        onChange={e=>setSearchQuery(e.target.value)}
-        aria-label="Search MSF Lebanon"
-        tabIndex={searchOpen?0:-1}
-      />
-      {searchOpen&&(
-        <button
-          type="button"
-          className="nav-search-close"
-          onClick={e=>{
-            e.stopPropagation();
-            setSearchOpen(false);
-            setSearchQuery('');
-          }}
-          aria-label="Close search"
-        >
-          <X size={18} aria-hidden="true"/>
-        </button>
-      )}
-    </form>
-  </div>
-  <a className="pill nav-contact" href={base+'/contact-us/'}>Contact us</a>
-  <div className="mobile-menu">
-    <Sheet>
-      <SheetTrigger aria-label="Open navigation"><Menu size={26}/></SheetTrigger>
-      <SheetContent>
-        <SheetHeader><SheetTitle>MSF Lebanon</SheetTitle><SheetDescription>Explore our work and stories.</SheetDescription></SheetHeader>
-        <form
-          className="mobile-sheet-search"
-          onSubmit={e=>{
-            e.preventDefault();
-            const target=(e.currentTarget.elements.namedItem('q') as HTMLInputElement);
-            if(target?.value.trim()){
-              window.location.href=`${base}/?s=${encodeURIComponent(target.value.trim())}`;
-            }
-          }}
-          role="search"
-        >
-          <input type="search" name="q" placeholder="Search MSF Lebanon..." aria-label="Search MSF Lebanon"/>
-          <button type="submit" aria-label="Submit search"><Search size={18}/></button>
-        </form>
-        <nav className="mobile-links" aria-label="Mobile navigation">
-          {navMenu.map(item => {
-            const isOpen = openMobileGroup === item.label;
-            return (
-              <div key={item.label} className="mobile-nav-group">
-                <div className="mobile-nav-header">
-                  <a href={base + item.url} className="mobile-nav-main-link">
-                    {item.label}
-                  </a>
-                  <button
-                    type="button"
-                    className={`mobile-nav-toggle-btn ${isOpen ? 'is-open' : ''}`}
-                    onClick={() => setOpenMobileGroup(isOpen ? null : item.label)}
-                    aria-label={`Toggle ${item.label} submenu`}
-                    aria-expanded={isOpen}
-                  >
-                    <ChevronDown size={18} />
-                  </button>
-                </div>
-                {isOpen && (
-                  <div className="mobile-nav-sublinks">
-                    {item.subItems.map(sub => (
-                      <a key={sub.label} href={base + sub.url}>
-                        <span>{sub.label}</span>
-                        <ArrowRight size={14} />
-                      </a>
-                    ))}
-                  </div>
-                )}
-              </div>
-            );
-          })}
-          <a href={base + '/contact-us/'} className="mobile-single-link">
-            <span>Contact us</span>
-            <ArrowRight size={18} />
-          </a>
-          <a href={base + '/ar/home-ar/'} className="mobile-single-link" lang="ar" dir="rtl">
-            <span>العربية</span>
-            <ArrowRight size={18} />
-          </a>
-        </nav>
-      </SheetContent>
-    </Sheet>
-  </div>
-</div>
-</header>
+<SiteHeader/>
 <main id="main" className="hero-story" key={slide}><div><p className="eyebrow light"><span/>{activeSlide.place}</p><h1>{activeSlide.title}</h1></div><div className="hero-summary"><p className="story-meta">{activeSlide.type} <span/>{activeSlide.date}</p><p>{activeSlide.summary}</p><a className="pill" href={base+activeSlide.url}>Read the story <ArrowRight size={19}/></a></div></main>
 <div className="hero-slider-controls"><button type="button" onClick={()=>moveSlide(-1)} aria-label="Previous featured story"><ChevronLeft/></button><div className="hero-dots" role="group" aria-label="Choose featured story">{heroSlides.map((item,index)=><button type="button" key={item.image} className={index===slide?'is-active':''} onClick={()=>goToSlide(index)} aria-label={`Show slide ${index+1}: ${item.place}`} aria-current={index===slide?'true':undefined}/>)}</div><span aria-live="polite">0{slide+1} / 0{heroSlides.length}</span><button type="button" onClick={()=>moveSlide(1)} aria-label="Next featured story"><ChevronRight/></button></div>
 <div className="hero-bottom"><span>Independent. Impartial. Neutral.</span><a href="#latest">Explore our stories <ArrowDown size={17}/></a></div>
@@ -429,7 +162,7 @@ return <>
       <h3 id="who-heading">Who We Are</h3>
       <p>We are Médecins Sans Frontières — Doctors Without Borders. An independent, international medical humanitarian organisation bringing together medical professionals, logisticians and many others to assist people in crisis.</p>
       <p>Medical ethics, impartiality, independence and neutrality guide everything we do.</p>
-      <a className="about-feature-link" href={base+'/about-us/'}>Discover MSF <span><ArrowRight size={20} aria-hidden="true"/></span></a>
+      <a className="about-feature-link" href="/about-us">Discover MSF <span><ArrowRight size={20} aria-hidden="true"/></span></a>
     </article>
     <article aria-labelledby="what-heading">
       <p className="about-kicker">Our medical action</p>
@@ -536,5 +269,5 @@ return <>
     </div>
   </div>
 </section>
-<footer><div className="wrap footer-top"><div><img className="footer-logo" src="/assets/logo.svg" alt="Médecins Sans Frontières"/><p>Medical humanitarian action.<br/>In Lebanon and around the world.</p></div><div><h3>Discover MSF</h3><a href={base+'/about-us/'}>Who we are</a><a href={base+'/what-we-do/msf-in-leb/'}>MSF in Lebanon</a><a href={base+'/medical-topics/'}>Medical topics</a></div><div><h3>Resources</h3><a href={base+'/news-events/research-publications/'}>Research & publications</a><a href={base+'/news-events/'}>News & events</a><a href="https://tembo.msf.org">Learning with Tembo</a></div><div><h3>Stay connected</h3><a href={base+'/contact-us/'}>Contact us</a><a href={base+'/subscribe-to-our-newsletters-2/'}>Subscribe to our newsletter <ArrowRight size={16}/></a><a href={base+'/ar/home-ar/'} lang="ar">العربية</a></div></div><div className="wrap footer-bottom"><span>© Médecins Sans Frontières</span><a href="https://www.msf.org">MSF worldwide <Globe size={16}/></a></div></footer>
+<SiteFooter/>
 </>}
