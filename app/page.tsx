@@ -5,10 +5,47 @@ import WorldMap from '@/components/world-map';
 import ActivityReport from '@/components/activity-report';
 import MedicalTopics from '@/components/medical-topics';
 import CareersIntro from '@/components/careers-intro';
-import { ArrowRight, ArrowDown, ChevronLeft, ChevronRight, Menu, Search, Globe, X, Plus, MapPin, Plane } from 'lucide-react';
+import { ArrowRight, ArrowDown, ChevronLeft, ChevronRight, ChevronDown, Menu, Search, Globe, X, Plus, MapPin, Plane } from 'lucide-react';
 import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetDescription } from '@/components/ui/sheet';
 const base = 'https://msf-lebanon.org';
-const nav = [['About us','/about-us/'],['Our work','/what-we-do/msf-in-leb/'],['Medical topics','/medical-topics/'],['News & stories','/news-events/news-stories/']];
+const navMenu = [
+  {
+    label: 'About us',
+    url: '/about-us/',
+    subItems: [
+      { label: 'MSF History', url: '/about-us/msf-history/' },
+      { label: 'MSF in Lebanon', url: '/what-we-do/msf-in-leb/' },
+      { label: 'MSF in the Field', url: '/what-we-do/msf-in-the-field/' },
+    ],
+  },
+  {
+    label: 'Work with us',
+    url: '/work-with-us/',
+    subItems: [
+      { label: 'Local Vacancies', url: '/work-with-us/local-vacancies/' },
+      { label: 'Overseas Vacancies', url: '/work-with-us/overseas-vacancies/' },
+      { label: 'Life in the field', url: '/work-with-us/life-in-the-field/' },
+    ],
+  },
+  {
+    label: 'News & events',
+    url: '/news-events/',
+    subItems: [
+      { label: 'News & Stories', url: '/news-events/news-stories/' },
+      { label: 'Research & Publications', url: '/news-events/research-publications/' },
+      { label: 'Events', url: '/news-events/events/' },
+    ],
+  },
+  {
+    label: 'Medical topics',
+    url: '/medical-topics/',
+    subItems: [
+      { label: 'Antimicrobial Resistance (AMR)', url: '/medical-topics/antimicrobial-resistance-amr/' },
+      { label: 'Insulin Access Resource', url: '/medical-topics/msf-lebanon-insulin-access-resource/' },
+      { label: 'World Patient Safety Day', url: '/medical-topics/world-patient-safety-day/' },
+    ],
+  },
+];
 const heroSlides = [
  {place:'Lebanon · Bekaa',type:'Voices from the field',date:'20 August 2026',title:<>Lives upheaved<br/>in the shadow<br/>of war</>,summary:'In the Bekaa, people forced from their homes face the lasting impact of conflict.',url:'/news/bekaa-where-lives-have-been-upheaved-in-the-shadow-of-war/',image:'/assets/hero.jpg',alt:'An MSF worker at a hospital in Lebanon',position:'center top'},
  {place:'Lebanon · South',type:'Statement',date:'7 September 2026',title:<>Water is life.<br/>Southern Lebanon<br/>must not be punished</>,summary:'Damage to water infrastructure is putting communities at greater risk and limiting access to essential services.',url:'/news/people-of-southern-lebanon-must-not-be-punished/',image:'/assets/news-1.jpg',alt:'Damaged water infrastructure in southern Lebanon',position:'center'},
@@ -104,6 +141,7 @@ const [slide,setSlide]=useState(0);
 const sliderTimerRef=useRef<number|null>(null);
 const [searchOpen,setSearchOpen]=useState(false);
 const [searchQuery,setSearchQuery]=useState('');
+const [openMobileGroup,setOpenMobileGroup]=useState<string|null>(null);
 const searchInputRef=useRef<HTMLInputElement>(null);
 const searchContainerRef=useRef<HTMLDivElement>(null);
 
@@ -220,7 +258,23 @@ return <>
 <div className="utility"><span className="edition">MÉDECINS SANS FRONTIÈRES · LEBANON</span><div><a href={base+'/work-with-us/'}>Work with MSF</a><a href="https://www.msf.org">MSF worldwide <Globe size={14}/></a><a href={base+'/ar/home-ar/'} lang="ar" dir="rtl">العربية</a></div></div>
 <div className="main-nav">
   <a href="#" className="brand" aria-label="MSF Lebanon home"><img src="/assets/logo.svg" alt="Médecins Sans Frontières — أطباء بلا حدود"/></a>
-  <nav aria-label="Main navigation">{nav.map(([label,url])=><a key={label} href={base+url}>{label}</a>)}</nav>
+  <nav aria-label="Main navigation">
+    {navMenu.map(item => (
+      <div key={item.label} className="nav-item">
+        <a href={base + item.url} className="nav-item-link">
+          {item.label}
+          <ChevronDown size={14} className="nav-chevron" aria-hidden="true" />
+        </a>
+        <div className="nav-dropdown" role="menu" aria-label={`${item.label} submenu`}>
+          {item.subItems.map(sub => (
+            <a key={sub.label} href={base + sub.url} role="menuitem">
+              {sub.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    ))}
+  </nav>
   <div className={`nav-search ${searchOpen?'is-expanded':''}`} ref={searchContainerRef}>
     <form className="nav-search-form" onSubmit={handleSearchSubmit} role="search">
       <button
@@ -283,10 +337,45 @@ return <>
           <button type="submit" aria-label="Submit search"><Search size={18}/></button>
         </form>
         <nav className="mobile-links" aria-label="Mobile navigation">
-          {nav.map(([label,url])=><a key={label} href={base+url}>{label}<ArrowRight size={18}/></a>)}
-          <a href={base+'/work-with-us/'}>Work with us</a>
-          <a href={base+'/contact-us/'}>Contact us</a>
-          <a href={base+'/ar/home-ar/'} lang="ar">العربية</a>
+          {navMenu.map(item => {
+            const isOpen = openMobileGroup === item.label;
+            return (
+              <div key={item.label} className="mobile-nav-group">
+                <div className="mobile-nav-header">
+                  <a href={base + item.url} className="mobile-nav-main-link">
+                    {item.label}
+                  </a>
+                  <button
+                    type="button"
+                    className={`mobile-nav-toggle-btn ${isOpen ? 'is-open' : ''}`}
+                    onClick={() => setOpenMobileGroup(isOpen ? null : item.label)}
+                    aria-label={`Toggle ${item.label} submenu`}
+                    aria-expanded={isOpen}
+                  >
+                    <ChevronDown size={18} />
+                  </button>
+                </div>
+                {isOpen && (
+                  <div className="mobile-nav-sublinks">
+                    {item.subItems.map(sub => (
+                      <a key={sub.label} href={base + sub.url}>
+                        <span>{sub.label}</span>
+                        <ArrowRight size={14} />
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+          <a href={base + '/contact-us/'} className="mobile-single-link">
+            <span>Contact us</span>
+            <ArrowRight size={18} />
+          </a>
+          <a href={base + '/ar/home-ar/'} className="mobile-single-link" lang="ar" dir="rtl">
+            <span>العربية</span>
+            <ArrowRight size={18} />
+          </a>
         </nav>
       </SheetContent>
     </Sheet>
