@@ -5,6 +5,7 @@ import SiteFooter from '@/components/site-footer';
 import CountUpNumber from '@/components/count-up';
 import AboutTimeline from '@/components/about-timeline';
 import VideoPoster from '@/components/video-poster';
+import LinkCards from '@/components/link-cards';
 import { base } from '@/lib/nav';
 import {
   heroSlides, hubIntro, whoWeAre, stats, charter, historyIntro,
@@ -27,28 +28,6 @@ const sections = [
   ['msf-in-lebanon', 'MSF in Lebanon'],
   ['msf-in-the-field', 'MSF in the Field'],
 ] as const;
-
-type Card = { title: string; text: string; image: string; alt: string; url: string; tag: string };
-
-function LinkCards({ cards }: { cards: Card[] }) {
-  return (
-    <div className="link-cards">
-      {cards.map(c => (
-        <a key={c.title} className="link-card" href={base + c.url}>
-          <span className="link-card-image">
-            <img src={c.image} alt={c.alt} loading="lazy" />
-            <span className="link-card-tag">{c.tag}</span>
-          </span>
-          <span className="link-card-body">
-            <h3>{c.title}</h3>
-            <p>{c.text}</p>
-            <span className="link-card-cta">Read more <span className="link-card-arrow"><ArrowRight size={20} aria-hidden="true" /></span></span>
-          </span>
-        </a>
-      ))}
-    </div>
-  );
-}
 
 export default function AboutUs() {
   return (

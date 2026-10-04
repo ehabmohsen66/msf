@@ -20,7 +20,8 @@ export const navMenu: NavItem[] = [
   },
   {
     label: 'Work with us',
-    url: '/work-with-us/',
+    url: '/work-with-us',
+    local: true,
     subItems: [
       { label: 'Local Vacancies', url: '/work-with-us/local-vacancies/' },
       { label: 'Overseas Vacancies', url: '/work-with-us/overseas-vacancies/' },

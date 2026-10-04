@@ -1437,3 +1437,60 @@ html { scroll-padding-top: 72px; }
 @media (max-width: 480px) {
   .about-stats-grid { grid-template-columns: 1fr; }
 }
+
+/* ───────── Work with us page ───────── */
+/* Re-uses the About us blocks (hero, anchor bar, intro, dark section, link cards) and the homepage
+   career cards. Only the pieces below are specific to this page. */
+
+/* Hero: single photo, no slideshow */
+.work-hero .about-slide { animation: none; opacity: 1; transform: none; }
+.work-hero .about-slide { object-position: 40% 35%; }
+.work-hero .story-meta { gap: 12px; flex-wrap: wrap; }
+
+/* 01 Vacancies (Elementor: 2 columns, each an Image Box / Call to Action with overlay) */
+.work-vacancies { padding-block: 90px; }
+.work-vacancies .career-path-lead {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 22px;
+  color: #fff;
+  margin: 0 0 10px;
+}
+
+/* 02 Behavioural Commitments sits on a grey band */
+.work-commitments { background: #f3f3f3; }
+.work-commitments .about-intro { padding-block: 90px; }
+.work-commitments .about-intro-copy .pill { margin-top: 12px; }
+
+/* 03 More Than a Job: two videos side by side on the dark section */
+.work-videos .section-heading { margin-bottom: 40px; }
+.work-videos-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+.work-video { margin: 0; }
+.work-video figcaption {
+  margin-top: 18px;
+  font-family: var(--font-heading-face), 'Arial Narrow', sans-serif;
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.25;
+  color: #fff;
+}
+.work-videos .video-title { display: none; }
+
+/* 04 Life in the Field: three cards per row */
+.link-cards-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.link-cards-3 .link-card-image { aspect-ratio: 4 / 3; }
+.link-cards-3 .link-card-body { padding: 22px 24px 24px; }
+.link-cards-3 .link-card-body h3 { font-size: 26px; margin-bottom: 22px; }
+
+@media (max-width: 1000px) {
+  .link-cards-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .work-videos-grid { gap: 24px; }
+  .work-video figcaption { font-size: 22px; }
+}
+@media (max-width: 800px) {
+  .work-vacancies { padding-block: 56px; }
+  .work-commitments .about-intro { padding-block: 56px; }
+  .work-videos-grid { grid-template-columns: 1fr; }
+  .link-cards-3 { grid-template-columns: 1fr; }
+  .work-vacancies .career-path { min-height: 520px; }
+}
