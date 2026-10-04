@@ -1,37 +1,57 @@
 'use client';
 
 import { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
-import { timeline } from '@/data/about';
+import { eras } from '@/data/about';
 
-/* 1971 to today. Shows the key milestones first, with a toggle for the full list.
-   Lebanon milestones are marked in red. */
+/* Our History timeline: the six groups from the live page as tabs (Elementor equivalent: Tabs widget).
+   Each tab shows the group's archive photo next to its milestones. Lebanon milestones are marked in red. */
 export default function AboutTimeline() {
-  const [showAll, setShowAll] = useState(false);
-  const items = showAll ? timeline : timeline.filter(m => m.featured);
+  const [active, setActive] = useState(0);
+  const era = eras[active];
 
   return (
-    <div className="timeline-wrap">
-      <ol className="timeline" aria-label="MSF timeline">
-        {items.map(m => (
-          <li key={m.year + m.text.slice(0, 12)} className={`timeline-item ${m.lebanon ? 'is-lebanon' : ''}`}>
-            <span className="timeline-year">{m.year}</span>
-            <div className="timeline-body">
-              {m.lebanon && <span className="timeline-tag">Lebanon</span>}
-              <p>{m.text}</p>
-            </div>
-          </li>
+    <div className="era-tabs">
+      <div className="era-tablist" role="tablist" aria-label="MSF timeline periods">
+        {eras.map((e, i) => (
+          <button
+            key={e.label}
+            type="button"
+            role="tab"
+            id={`era-tab-${i}`}
+            aria-selected={i === active}
+            aria-controls={`era-panel-${i}`}
+            tabIndex={i === active ? 0 : -1}
+            className={i === active ? 'is-active' : undefined}
+            onClick={() => setActive(i)}
+            onKeyDown={ev => {
+              if (ev.key !== 'ArrowRight' && ev.key !== 'ArrowLeft') return;
+              const next = (active + (ev.key === 'ArrowRight' ? 1 : eras.length - 1)) % eras.length;
+              setActive(next);
+              document.getElementById(`era-tab-${next}`)?.focus();
+            }}
+          >
+            {e.label}
+          </button>
         ))}
-      </ol>
-      <button
-        type="button"
-        className="timeline-toggle"
-        onClick={() => setShowAll(v => !v)}
-        aria-expanded={showAll}
-      >
-        {showAll ? 'Show key milestones' : 'Show the full timeline'}
-        <ChevronDown size={18} aria-hidden="true" className={showAll ? 'is-flipped' : ''} />
-      </button>
+      </div>
+
+      <div className="era-panel" role="tabpanel" id={`era-panel-${active}`} aria-labelledby={`era-tab-${active}`} key={era.label}>
+        <figure className="era-image">
+          <img src={era.image} alt={era.alt} width={652} height={412} loading="lazy" />
+          <figcaption>{era.label}</figcaption>
+        </figure>
+        <ol className="timeline">
+          {era.items.map(m => (
+            <li key={m.year} className={`timeline-item${m.lebanon ? ' is-lebanon' : ''}`}>
+              <span className="timeline-year">{m.year}</span>
+              <div className="timeline-body">
+                {m.lebanon && <span className="timeline-tag">Lebanon</span>}
+                {m.text.map((t, i) => <p key={i}>{t}</p>)}
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
     </div>
   );
 }

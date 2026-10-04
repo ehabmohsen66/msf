@@ -3,13 +3,14 @@
 import { useEffect, useState, useRef } from 'react';
 import { ArrowRight, ChevronDown, Menu, Search, Globe, X } from 'lucide-react';
 import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetDescription } from '@/components/ui/sheet';
-import { base, navMenu } from '@/lib/nav';
+import { base, navMenu, navHref } from '@/lib/nav';
 
 /* Utility bar + main navigation. Sits on top of a `.hero` image on every page. */
 export default function SiteHeader(){
 const [searchOpen,setSearchOpen]=useState(false);
 const [searchQuery,setSearchQuery]=useState('');
 const [openMobileGroup,setOpenMobileGroup]=useState<string|null>(null);
+const [mobileOpen,setMobileOpen]=useState(false);
 const searchInputRef=useRef<HTMLInputElement>(null);
 const searchContainerRef=useRef<HTMLDivElement>(null);
 
@@ -66,13 +67,13 @@ return (
   <nav aria-label="Main navigation">
     {navMenu.map(item => (
       <div key={item.label} className="nav-item">
-        <a href={item.local ? item.url : base + item.url} className="nav-item-link">
+        <a href={navHref(item)} className="nav-item-link">
           {item.label}
           <ChevronDown size={14} className="nav-chevron" aria-hidden="true" />
         </a>
         <div className="nav-dropdown" role="menu" aria-label={`${item.label} submenu`}>
           {item.subItems.map(sub => (
-            <a key={sub.label} href={base + sub.url} role="menuitem">
+            <a key={sub.label} href={navHref(sub)} role="menuitem">
               {sub.label}
             </a>
           ))}
@@ -123,9 +124,9 @@ return (
   </div>
   <a className="pill nav-contact" href={base+'/contact-us/'}>Contact us</a>
   <div className="mobile-menu">
-    <Sheet>
+    <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
       <SheetTrigger aria-label="Open navigation"><Menu size={26}/></SheetTrigger>
-      <SheetContent>
+      <SheetContent onClick={e=>{ if((e.target as HTMLElement).closest('a')) setMobileOpen(false); }}>
         <SheetHeader><SheetTitle>MSF Lebanon</SheetTitle><SheetDescription>Explore our work and stories.</SheetDescription></SheetHeader>
         <form
           className="mobile-sheet-search"
@@ -147,7 +148,7 @@ return (
             return (
               <div key={item.label} className="mobile-nav-group">
                 <div className="mobile-nav-header">
-                  <a href={item.local ? item.url : base + item.url} className="mobile-nav-main-link">
+                  <a href={navHref(item)} className="mobile-nav-main-link">
                     {item.label}
                   </a>
                   <button
@@ -163,7 +164,7 @@ return (
                 {isOpen && (
                   <div className="mobile-nav-sublinks">
                     {item.subItems.map(sub => (
-                      <a key={sub.label} href={base + sub.url}>
+                      <a key={sub.label} href={navHref(sub)}>
                         <span>{sub.label}</span>
                         <ArrowRight size={14} />
                       </a>

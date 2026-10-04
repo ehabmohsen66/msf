@@ -1,7 +1,11 @@
 export const base = 'https://msf-lebanon.org';
 
 /* `local: true` items live in this app; everything else still links to the live site. */
-export type NavItem = { label: string; url: string; local?: boolean; subItems: { label: string; url: string }[] };
+export type NavLink = { label: string; url: string; local?: boolean };
+export type NavItem = NavLink & { subItems: NavLink[] };
+
+/* Resolves a menu link to either this app or the live site. */
+export const navHref = (l: NavLink) => (l.local ? l.url : base + l.url);
 
 export const navMenu: NavItem[] = [
   {
@@ -9,9 +13,9 @@ export const navMenu: NavItem[] = [
     url: '/about-us',
     local: true,
     subItems: [
-      { label: 'MSF History', url: '/about-us/msf-history/' },
-      { label: 'MSF in Lebanon', url: '/what-we-do/msf-in-leb/' },
-      { label: 'MSF in the Field', url: '/what-we-do/msf-in-the-field/' },
+      { label: 'MSF History', url: '/about-us#msf-history', local: true },
+      { label: 'MSF in Lebanon', url: '/about-us#msf-in-lebanon', local: true },
+      { label: 'MSF in the Field', url: '/about-us#msf-in-the-field', local: true },
     ],
   },
   {
