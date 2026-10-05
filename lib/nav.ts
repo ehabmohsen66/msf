@@ -23,9 +23,9 @@ export const navMenu: NavItem[] = [
     url: '/work-with-us',
     local: true,
     subItems: [
-      { label: 'Local Vacancies', url: '/work-with-us/local-vacancies/' },
-      { label: 'Overseas Vacancies', url: '/work-with-us/overseas-vacancies/' },
-      { label: 'Life in the field', url: '/work-with-us/life-in-the-field/' },
+      { label: 'Local Vacancies', url: '/work-with-us#vacancies', local: true },
+      { label: 'Overseas Vacancies', url: '/work-with-us#vacancies', local: true },
+      { label: 'Life in the field', url: '/work-with-us#life-in-the-field', local: true },
     ],
   },
   {
