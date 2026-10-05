@@ -30,11 +30,12 @@ export const navMenu: NavItem[] = [
   },
   {
     label: 'News & events',
-    url: '/news-events/',
+    url: '/news-events',
+    local: true,
     subItems: [
-      { label: 'News & Stories', url: '/news-events/news-stories/' },
+      { label: 'News & Stories', url: '/news-events#news-stories', local: true },
       { label: 'Research & Publications', url: '/news-events/research-publications/' },
-      { label: 'Events', url: '/news-events/events/' },
+      { label: 'Events', url: '/news-events#events', local: true },
     ],
   },
   {
