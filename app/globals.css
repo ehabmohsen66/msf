@@ -1594,3 +1594,167 @@ html { scroll-padding-top: 72px; }
 @media (max-width: 520px) {
   .events-grid { grid-template-columns: 1fr; }
 }
+
+/* ───────── Medical topics page ───────── */
+/* Hero: crossfade between the three topic photos (18s loop, 6s each) */
+.topics-hero .about-slide { animation-name: topics-slide; animation-duration: 18s; }
+@keyframes topics-slide {
+  0% { opacity: 0; transform: scale(1.06); }
+  5% { opacity: 1; }
+  33% { opacity: 1; }
+  39% { opacity: 0; transform: scale(1); }
+  100% { opacity: 0; }
+}
+.topics-hero .story-meta { gap: 12px; flex-wrap: wrap; }
+.topics-page-panels { padding-block: 90px; }
+
+/* ───────── AMR page ───────── */
+/* Hero: the live AMR collage is pale by design, so boost it under the dark overlay */
+.amr-hero .about-slide { filter: contrast(1.45) saturate(1.25) brightness(.85); object-position: center; }
+.amr-hero h1 { font-size: clamp(56px, 7.4vw, 112px); }
+.amr-breadcrumb a { color: #fff; text-decoration: underline; text-underline-offset: 4px; text-decoration-color: rgb(255 255 255 / 45%); }
+.amr-breadcrumb a:hover { text-decoration-color: var(--red); }
+.amr-breadcrumb svg { opacity: .7; }
+.amr-hero .story-meta { font-size: 17px; }
+
+/* Video + text row (Elementor: 2-column container, Video + Heading + Text Editor + Toggle) */
+.amr-split {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  gap: clamp(36px, 5vw, 80px);
+  align-items: center;
+  padding-block: 90px;
+}
+.amr-split-reverse { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); }
+.amr-split-reverse .amr-split-media { order: 2; }
+.amr-split-copy h2 { margin-bottom: 22px; }
+.amr-split-copy .about-lead { font-family: Georgia, serif; font-size: 21px; line-height: 1.6; color: #222; margin-bottom: 18px; }
+.amr-split .video-title { display: none; }
+
+/* Read more toggle */
+.amr-more summary {
+  display: inline-flex; align-items: center; gap: 10px;
+  list-style: none; cursor: pointer;
+  font-weight: 600; font-size: 16px;
+  padding: 10px 0; border-bottom: 2px solid var(--red);
+}
+.amr-more summary::-webkit-details-marker { display: none; }
+.amr-more summary svg { color: var(--red); transition: transform .25s; }
+.amr-more[open] summary svg { transform: rotate(45deg); }
+.amr-more-close, .amr-more[open] .amr-more-open { display: none; }
+.amr-more[open] .amr-more-close { display: inline; }
+.amr-more-body { padding-top: 18px; }
+.amr-more-body p { font-size: 18px; line-height: 1.7; color: #555; margin: 0 0 14px; }
+.amr-more-body a, .amr-calls a, .amr-pubs-more a { color: var(--red); text-decoration: underline; text-underline-offset: 3px; }
+
+/* Stat band */
+.amr-stat-band { background: var(--red); color: #fff; }
+.amr-stat-band .wrap { display: flex; align-items: baseline; gap: 28px; flex-wrap: wrap; padding-block: 38px; }
+.amr-stat-value { font-family: var(--font-heading), sans-serif; font-size: clamp(44px, 5vw, 72px); font-weight: 600; line-height: 1; margin: 0; letter-spacing: -1px; }
+.amr-stat-label { font-family: Georgia, serif; font-style: italic; font-size: 20px; margin: 0; max-width: 520px; }
+
+/* Facts accordion (Elementor: Accordion widget) */
+.amr-facts { padding-block: 90px; }
+.amr-facts-inner { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: clamp(36px, 5vw, 80px); align-items: start; }
+.amr-facts-inner > div:first-child { position: sticky; top: 100px; }
+.amr-accordion { border-top: 1px solid #d4d4d4; }
+.amr-accordion details { border-bottom: 1px solid #d4d4d4; }
+.amr-accordion summary {
+  display: grid; grid-template-columns: 48px minmax(0, 1fr) 28px; align-items: center; gap: 12px;
+  padding: 26px 0; list-style: none; cursor: pointer;
+}
+.amr-accordion summary::-webkit-details-marker { display: none; }
+.amr-accordion-num { font-family: var(--font-heading), sans-serif; font-size: 15px; letter-spacing: 1.5px; color: var(--red); }
+.amr-accordion-q { font-family: var(--font-heading), sans-serif; font-size: 27px; font-weight: 500; line-height: 1.25; }
+.amr-accordion summary svg { color: var(--red); transition: transform .25s; }
+.amr-accordion details[open] summary svg { transform: rotate(45deg); }
+.amr-accordion summary:hover .amr-accordion-q { color: var(--red); }
+.amr-accordion details p { margin: 0 0 28px 60px; font-size: 18px; line-height: 1.7; color: #555; }
+
+/* Dark section with two video rows */
+.amr-dark { padding-block: 0; }
+.amr-split-dark { padding-block: 90px; }
+.amr-split-dark + .amr-split-dark { border-top: 1px solid rgb(255 255 255 / 14%); }
+.amr-split-dark h2 { color: #fff; }
+.amr-split-dark .about-lead { color: #e8e8e8; }
+.amr-split-dark .amr-more summary { color: #fff; }
+.amr-split-dark .amr-more-body p { color: #c9c9c9; }
+
+/* MSF response pillars */
+.amr-response { padding-bottom: 90px; }
+.amr-response .amr-split { padding-bottom: 56px; }
+.amr-pillars { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+.amr-pillars li { background: #f3f3f3; border-top: 3px solid var(--red); padding: 30px 30px 34px; }
+.amr-pillar-icon { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; background: #fff; color: var(--red); margin-bottom: 22px; }
+.amr-pillar-num { display: block; font-size: 13px; letter-spacing: 1.6px; text-transform: uppercase; color: #666; margin-bottom: 8px; }
+.amr-pillars h3 { font-family: var(--font-heading), sans-serif; font-size: 26px; font-weight: 500; line-height: 1.25; margin: 0; }
+
+/* Political calls */
+.amr-politics { padding-bottom: 48px !important; }
+.amr-calls { padding-bottom: 90px; }
+.amr-calls-intro { font-family: var(--font-heading), sans-serif; font-size: 24px; font-weight: 500; margin: 0 0 24px; }
+.amr-calls ol { list-style: none; counter-reset: call; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 48px; }
+.amr-calls li {
+  counter-increment: call; position: relative;
+  padding: 22px 0 22px 58px; border-top: 1px solid #d4d4d4;
+  font-size: 18px; line-height: 1.6; color: #333;
+}
+.amr-calls li::before {
+  content: counter(call, decimal-leading-zero);
+  position: absolute; left: 0; top: 22px;
+  font-family: var(--font-heading), sans-serif; font-size: 22px; color: var(--red);
+}
+
+/* Who has a role: horizontal snap strip */
+.amr-roles { padding-block: 90px; overflow: hidden; }
+.amr-roles-heading { align-items: end; gap: 48px; }
+.amr-roles-lead { max-width: 560px; font-size: 18px; line-height: 1.7; color: #555; margin: 0; }
+.amr-roles-strip {
+  display: flex; gap: 22px; overflow-x: auto; scroll-snap-type: x mandatory;
+  padding: 8px max(48px, calc((100vw - 1280px) / 2 + 48px)) 18px;
+  scroll-padding-inline: max(48px, calc((100vw - 1280px) / 2 + 48px));
+  scrollbar-width: thin;
+}
+.amr-roles-strip:focus-visible { outline: 3px solid var(--red); outline-offset: -3px; }
+.amr-roles-strip figure { flex: 0 0 clamp(260px, 30vw, 380px); margin: 0; scroll-snap-align: start; }
+.amr-roles-strip img { display: block; width: 100%; height: auto; aspect-ratio: 1; box-shadow: 0 14px 34px rgb(0 0 0 / 12%); }
+
+/* Publications */
+.amr-publications { padding-block: 90px; border-top: 1px solid #e3e3e3; }
+.amr-pubs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 48px; }
+.amr-pubs li { border-top: 1px solid #d4d4d4; }
+.amr-pubs a { display: flex; flex-direction: column; height: 100%; padding: 28px 0 30px; }
+.amr-pub-source { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--red); margin-bottom: 12px; }
+.amr-pubs h3 { font-family: var(--font-heading), sans-serif; font-size: 25px; font-weight: 500; line-height: 1.25; margin: 0 0 14px; }
+.amr-pubs a:hover h3 { color: var(--red); }
+.amr-pubs p { font-size: 17px; line-height: 1.65; color: #555; margin: 0 0 20px; }
+.amr-pubs .read { margin-top: auto; justify-content: flex-start; gap: 10px; }
+.amr-pubs-more { margin: 30px 0 0; font-size: 18px; color: #555; }
+
+/* Get involved band (re-uses the News page newsletter band) */
+.amr-involved .wrap { align-items: center; }
+.amr-involved-text { max-width: 640px; font-size: 18px; line-height: 1.65; margin: 16px 0 0; color: rgb(255 255 255 / 92%); }
+.amr-involved .pill { gap: 12px; text-transform: none; letter-spacing: .3px; font-family: inherit; font-weight: 600; font-size: 16px; }
+
+@media (max-width: 1000px) {
+  .amr-split, .amr-facts-inner { grid-template-columns: 1fr; }
+  .amr-split-reverse .amr-split-media { order: 0; }
+  .amr-facts-inner > div:first-child { position: static; }
+  .amr-pillars { grid-template-columns: 1fr; gap: 18px; }
+  .amr-roles-heading { flex-direction: column; align-items: start; gap: 18px; }
+}
+@media (max-width: 800px) {
+  .topics-page-panels { padding-block: 56px; }
+  .amr-split, .amr-split-dark { padding-block: 56px; }
+  .amr-split-copy .about-lead { font-size: 19px; }
+  .amr-facts, .amr-roles, .amr-publications { padding-block: 56px; }
+  .amr-accordion-q { font-size: 22px; }
+  .amr-accordion summary { grid-template-columns: 38px minmax(0, 1fr) 24px; padding: 20px 0; }
+  .amr-accordion details p { margin-left: 0; font-size: 17px; }
+  .amr-response { padding-bottom: 56px; }
+  .amr-calls { padding-bottom: 56px; }
+  .amr-calls ol, .amr-pubs { grid-template-columns: 1fr; }
+  .amr-roles-strip { padding-inline: 26px; scroll-padding-inline: 26px; }
+  .amr-roles-strip figure { flex-basis: 78vw; }
+  .amr-involved .pill { font-size: 14px; padding: 14px 20px; word-break: break-all; }
+}

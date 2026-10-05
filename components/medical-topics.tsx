@@ -3,7 +3,10 @@
 import { useState } from 'react';
 import { ArrowRight, Pill, ShieldCheck, Syringe } from 'lucide-react';
 
-const base = 'https://msf-lebanon.org';
+import { base } from '@/lib/nav';
+
+/* AMR is rebuilt in this app; Insulin access and Patient Safety Day stay on the live site. */
+const href = (url: string, local?: boolean) => (local ? url : base + url);
 
 const topics = [
   {
@@ -12,7 +15,8 @@ const topics = [
     title: 'Antimicrobial resistance',
     text: 'How misusing antibiotics fuels infections that no longer respond to treatment, and the part each of us can play to stop it.',
     cta: 'Explore the AMR hub',
-    url: '/medical-topics/antimicrobial-resistance-amr/',
+    url: '/medical-topics/antimicrobial-resistance-amr',
+    local: true,
     image: '/assets/topic-amr.jpg',
     alt: 'An MSF staff member helps a patient on crutches walk down a hospital corridor.',
     position: '38% 50%',
@@ -41,19 +45,34 @@ const topics = [
   },
 ];
 
-export default function MedicalTopics() {
+type Props = {
+  /* Homepage defaults; the Medical topics page passes its own heading and hides the "All" link. */
+  eyebrow?: string;
+  title?: string;
+  intro?: string;
+  showAllLink?: boolean;
+  className?: string;
+};
+
+export default function MedicalTopics({
+  eyebrow = 'Health in focus',
+  title = 'Medical topics',
+  intro = 'Practical resources on the health issues facing the communities we serve, from antibiotic resistance to living with diabetes in a crisis.',
+  showAllLink = true,
+  className = '',
+}: Props) {
   const [active, setActive] = useState(0);
 
   return (
-    <section className="topics-section wrap" id="medical-topics" aria-labelledby="topics-heading">
+    <section className={`topics-section wrap ${className}`} id="medical-topics" aria-labelledby="topics-heading">
       <div className="section-heading">
         <div>
-          <p className="eyebrow">Health in focus</p>
-          <h2 id="topics-heading">Medical topics</h2>
+          <p className="eyebrow">{eyebrow}</p>
+          <h2 id="topics-heading">{title}</h2>
         </div>
-        <a className="text-link" href={base + '/medical-topics/'}>All medical topics <ArrowRight size={20} /></a>
+        {showAllLink && <a className="text-link" href="/medical-topics">All medical topics <ArrowRight size={20} /></a>}
       </div>
-      <p className="topics-intro">Practical resources on the health issues facing the communities we serve, from antibiotic resistance to living with diabetes in a crisis.</p>
+      <p className="topics-intro">{intro}</p>
 
       <div className="topics-panels">
         {topics.map((t, i) => {
@@ -61,7 +80,7 @@ export default function MedicalTopics() {
           return (
             <a
               key={t.title}
-              href={base + t.url}
+              href={href(t.url, 'local' in t && t.local)}
               className={`topic-panel ${isActive ? 'is-active' : ''}`}
               onMouseEnter={() => setActive(i)}
               onFocus={() => setActive(i)}
