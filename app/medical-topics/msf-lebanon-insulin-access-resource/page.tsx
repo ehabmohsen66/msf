@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { ArrowDown, ChevronRight } from 'lucide-react';
 import SiteHeader from '@/components/site-header';
 import SiteFooter from '@/components/site-footer';
 
@@ -128,7 +129,26 @@ export default function InsulinAccessPage() {
 
   return (
     <div ref={containerRef} className="msf-insulin-page-wrapper">
-      <SiteHeader />
+      <section className="hero about-hero work-hero amr-hero" aria-labelledby="insulin-title">
+        <div className="hero-images about-slides" aria-hidden="true">
+          <img className="about-slide" src="https://msf-lebanon.org/wp-content/uploads/2026/07/MSB178279High-scaled.jpg" alt="" fetchPriority="high" style={{ objectPosition: '18% center' }} />
+        </div>
+        <SiteHeader />
+        <div className="hero-story">
+          <div>
+            <nav className="eyebrow light amr-breadcrumb" aria-label="Breadcrumb">
+              <span /><a href="/medical-topics">Medical Topics</a><ChevronRight size={14} aria-hidden="true" />Insulin Access
+            </nav>
+            <h1 id="insulin-title">Finding your<br />insulin</h1>
+          </div>
+          <div className="hero-summary">
+            <p className="story-meta">Welcome to MSF Lebanon Insulin Access Resource</p>
+            <p>If you live with type 1 diabetes, you need insulin to survive. This page brings together where you can access insulin in Lebanon, and resources to help you manage during crisis.</p>
+            <a className="pill" href="#msf-insulin-actions">What you can do here <ArrowDown size={19} /></a>
+          </div>
+        </div>
+        <div className="hero-bottom"><span>Siwar holds up her insulin pen, Arsal, Lebanon. © Carmen Yahchouchi/MSF</span><a href="#msf-insulin-emergency">Emergency support <ArrowDown size={17} /></a></div>
+      </section>
       <style
         dangerouslySetInnerHTML={{
           __html: `
@@ -475,51 +495,7 @@ export default function InsulinAccessPage() {
           overflow: 'visible',
         }}
       >
-        <section className="msf-hero">
-          <div className="msf-container msf-hero-grid">
-            <div className="msf-hero-copy msf-reveal">
-              <p className="msf-kicker">Welcome to MSF Lebanon Insulin Access Resource</p>
-              <h1 className="msf-title-xl">FINDING YOUR INSULIN</h1>
-              <p className="msf-body-lg">
-                If you live with type 1 diabetes, you need insulin to survive. We know that finding
-                a reliable supply during crisis is difficult. This page brings together information
-                on where you can access insulin in Lebanon, along with resources to help you manage
-                during times of crisis.
-              </p>
-              <div className="msf-btn-row">
-                <a className="msf-btn msf-btn-red" href="#msf-insulin-actions">
-                  What you can do here{' '}
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M5 12h14"></path>
-                    <path d="M13 6l6 6-6 6"></path>
-                  </svg>
-                </a>
-                <a className="msf-btn msf-btn-outline" href="#msf-insulin-emergency">
-                  Emergency support{' '}
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M5 12h14"></path>
-                    <path d="M13 6l6 6-6 6"></path>
-                  </svg>
-                </a>
-              </div>
-            </div>
-
-            <figure className="msf-photo-card msf-reveal msf-delay-1">
-              <img
-                src="https://msf-lebanon.org/wp-content/uploads/2026/07/MSB178279High-scaled.jpg"
-                alt="Siwar holds up her insulin pen while lying among her toys in her family's makeshift home in Arsal, Lebanon."
-                loading="eager"
-                decoding="async"
-              />
-              <figcaption className="msf-photo-credit">
-                Siwar holds up her insulin pen while lying down amongst her toys in her family’s
-                makeshift home in Arsal. She was diagnosed with type 1 diabetes at a young age and
-                frequents the MSF clinic in the town for treatment. Arsal, Lebanon, May 2023. Carmen
-                Yahchouchi/MSF
-              </figcaption>
-            </figure>
-          </div>
-        </section>
+        
 
         <div className="msf-ticker" aria-hidden="true">
           <div className="msf-ticker-track">

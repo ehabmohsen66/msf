@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { ArrowDown, ChevronRight } from 'lucide-react';
 import SiteHeader from '@/components/site-header';
 import SiteFooter from '@/components/site-footer';
 
@@ -292,7 +293,26 @@ export default function WorldPatientSafetyDayPage() {
 
   return (
     <div ref={containerRef} className="wpsd-root-wrapper">
-      <SiteHeader />
+      <section className="hero about-hero work-hero amr-hero" aria-labelledby="wpsd-title">
+        <div className="hero-images about-slides" aria-hidden="true">
+          <img className="about-slide" src="https://msf-lebanon.org/wp-content/uploads/2026/09/MSB246809High-scaled.jpg" alt="" fetchPriority="high" />
+        </div>
+        <SiteHeader />
+        <div className="hero-story">
+          <div>
+            <nav className="eyebrow light amr-breadcrumb" aria-label="Breadcrumb">
+              <span /><a href="/medical-topics">Medical Topics</a><ChevronRight size={14} aria-hidden="true" />Patient Safety
+            </nav>
+            <h1 id="wpsd-title">World Patient<br />Safety Day</h1>
+          </div>
+          <div className="hero-summary">
+            <p className="story-meta">17 September</p>
+            <p>Safe care for people living with chronic diseases.</p>
+            <a className="pill" href="#wpsd-ch01">Read the story <ArrowDown size={19} /></a>
+          </div>
+        </div>
+        <div className="hero-bottom"><span>World Patient Safety Day 2026</span><a href="#wpsd-carousel-en">See the posts <ArrowDown size={17} /></a></div>
+      </section>
       <style
         dangerouslySetInnerHTML={{
           __html: `
@@ -827,66 +847,7 @@ export default function WorldPatientSafetyDayPage() {
 
       <div className="wpsd-page" id="wpsd-top" dir="ltr" lang="en">
         <div className="wpsd-lang" data-wpsd-lang="en" lang="en" dir="ltr">
-          <header className="wpsd-hero">
-            <div className="wpsd-container wpsd-hero-grid">
-              <div className="wpsd-reveal">
-                <p className="wpsd-hero-logo">
-                  <img
-                    src="https://msf-lebanon.org/wp-content/uploads/2022/03/favicon.png"
-                    alt="MSF"
-                    width="72"
-                    height="72"
-                  />
-                </p>
-                <h1 className="wpsd-display wpsd-t-hero">
-                  World Patient Safety Day: Safe Care for People Living with Chronic Diseases
-                </h1>
-                <div className="wpsd-hero-rule" aria-hidden="true"></div>
-              </div>
-              <div className="wpsd-fan wpsd-reveal" aria-hidden="true">
-                <a href="#wpsd-carousel-en" tabIndex={-1}>
-                  <img
-                    data-wpsd-file="5.png"
-                    src="https://msf-lebanon.org/wp-content/uploads/2026/09/5.png"
-                    alt=""
-                    decoding="async"
-                  />
-                </a>
-                <a href="#wpsd-carousel-en" tabIndex={-1}>
-                  <img
-                    data-wpsd-file="4.png"
-                    src="https://msf-lebanon.org/wp-content/uploads/2026/09/4-1.png"
-                    alt=""
-                    decoding="async"
-                  />
-                </a>
-                <a href="#wpsd-carousel-en" tabIndex={-1}>
-                  <img
-                    data-wpsd-file="3.png"
-                    src="https://msf-lebanon.org/wp-content/uploads/2026/09/3.png"
-                    alt=""
-                    decoding="async"
-                  />
-                </a>
-                <a href="#wpsd-carousel-en" tabIndex={-1}>
-                  <img
-                    data-wpsd-file="2.png"
-                    src="https://msf-lebanon.org/wp-content/uploads/2026/09/2.png"
-                    alt=""
-                    decoding="async"
-                  />
-                </a>
-                <a href="#wpsd-carousel-en" tabIndex={-1}>
-                  <img
-                    data-wpsd-file="1.png"
-                    src="https://msf-lebanon.org/wp-content/uploads/2026/09/1.png"
-                    alt=""
-                    decoding="async"
-                  />
-                </a>
-              </div>
-            </div>
-          </header>
+          
 
           <section className="wpsd-section wpsd-paper">
             <div className="wpsd-container wpsd-intro">
