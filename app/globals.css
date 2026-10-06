@@ -1795,10 +1795,28 @@ html { scroll-padding-top: 72px; }
 .contact-label { font-family: var(--font-heading), sans-serif; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: #777; }
 .contact-cards p, .contact-cards a { margin: 0; font-size: 20px; line-height: 1.45; color: #171717; }
 .contact-cards a:hover { color: var(--red); }
-.contact-follow { margin-top: 34px; display: flex; flex-wrap: wrap; align-items: center; gap: 18px 28px; }
-.contact-follow > div { display: flex; flex-wrap: wrap; gap: 10px; }
-.contact-follow a { border: 1px solid #ddd; border-radius: 40px; padding: 10px 20px; font-family: var(--font-heading), sans-serif; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; transition: border-color .2s, color .2s; }
-.contact-follow a:hover { border-color: var(--red); color: var(--red); }
+.contact-follow { margin-top: 36px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; }
+.contact-social-icons { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.contact-social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #f6f3ee;
+  border: 1px solid #e2ddd6;
+  color: #171717;
+  transition: all .2s cubic-bezier(.4, 0, .2, 1);
+}
+.contact-social-btn:hover {
+  background: var(--red);
+  border-color: var(--red);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(230, 0, 0, .22);
+}
+.contact-social-btn svg { display: block; }
 .contact-touch { background: #f6f3ee; padding-block: 90px; }
 .contact-touch-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 60px; align-items: start; }
 .contact-touch h2 { margin-bottom: 30px; }
