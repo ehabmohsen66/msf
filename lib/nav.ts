@@ -7,6 +7,15 @@ export type NavItem = NavLink & { subItems: NavLink[] };
 /* Resolves a menu link to either this app or the live site. */
 export const navHref = (l: NavLink) => (l.local ? l.url : base + l.url);
 
+/* Resolves a news post link to the local demo route (/news/<slug>). */
+export const postHref = (url: string): string => {
+  if (!url) return '#';
+  if (url.startsWith('/news/')) {
+    return url.replace(/\/$/, '');
+  }
+  return base + url;
+};
+
 export const navMenu: NavItem[] = [
   {
     label: 'About us',

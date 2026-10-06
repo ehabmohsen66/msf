@@ -1,6 +1,6 @@
 import { ArrowDown, ArrowRight, Download } from 'lucide-react';
 
-const reportUrl = 'https://msf-lebanon.org/news/international-activity-report-2025/';
+const reportUrl = '/news/international-activity-report-2025';
 const pdfUrl = 'https://www.msf.org/sites/default/files/2026-08/MSF_IAR_2025_1.pdf';
 
 /* Chapters of the report. Two of them live further down this homepage,

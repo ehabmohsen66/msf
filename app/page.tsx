@@ -8,7 +8,7 @@ import CareersIntro from '@/components/careers-intro';
 import SiteHeader from '@/components/site-header';
 import SiteFooter from '@/components/site-footer';
 import CountUpNumber from '@/components/count-up';
-import { base } from '@/lib/nav';
+import { base, postHref } from '@/lib/nav';
 import { ArrowRight, ArrowDown, ChevronLeft, ChevronRight, MapPin, Plane } from 'lucide-react';
 const heroSlides = [
  {place:'Lebanon · Bekaa',type:'Voices from the field',date:'20 August 2026',title:<>Lives upheaved<br/>in the shadow<br/>of war</>,summary:'In the Bekaa, people forced from their homes face the lasting impact of conflict.',url:'/news/bekaa-where-lives-have-been-upheaved-in-the-shadow-of-war/',image:'/assets/hero.jpg',alt:'An MSF worker at a hospital in Lebanon',position:'center top'},
@@ -20,9 +20,9 @@ const stories = [
  {tag:'Yemen',title:'Malnourished children are reaching hospitals in critical condition in Yemen',date:'8 September 2026',url:'/news/malnourished-children-in-yemen/',image:'/assets/news-2.jpg'},
  {tag:'Palestine',title:'Escalating violence and movement restrictions continue to drive medical needs in Hebron',date:'21 August 2026',url:'/news/escalating-violence-and-movement-restrictions-continue-to-drive-medical-needs-in-hebron/',image:'/assets/news-3.jpg'},
  {tag:'Lebanon',title:'Bekaa: Emergency mobile clinics deployed to support displaced families',date:'18 August 2026',url:'/news/bekaa-where-lives-have-been-upheaved-in-the-shadow-of-war/',image:'/assets/hero.jpg'},
- {tag:'Sudan',title:'Darfur crisis: Health facilities pushed to the brink amid acute medical shortages',date:'2 August 2026',url:'/news/sudan-darfur-medical-emergency/',image:'/assets/figure-emergency.jpg'},
- {tag:'Syria',title:'Cross-border medical teams deliver vital healthcare across northwest Syria',date:'19 July 2026',url:'/news/syria-cross-border-medical-response/',image:'/assets/figure-consultations.jpg'},
- {tag:'Afghanistan',title:'Ensuring safe maternal and neonatal care in remote provinces',date:'30 June 2026',url:'/news/afghanistan-maternal-healthcare-khost/',image:'/assets/figure-births.jpg'}
+ {tag:'Sudan',title:'Sudan Aid Cuts Force Widespread Clinic Closures',date:'9 September 2026',url:'/news/sudan-aid-cuts-force-widespread-clinic-closures/',image:'/assets/news/n06-sudan-clinics.png'},
+ {tag:'Syria',title:'Strengthening Healthcare Access in Daraa, Syria',date:'16 September 2026',url:'/news/strengthening-healthcare-access-in-daraa-syria/',image:'/assets/news/n04-daraa-syria.png'},
+ {tag:'Yemen',title:'A Lifeline for Women and Children in Mocha, Yemen',date:'18 September 2026',url:'/news/lifeline-for-women-and-children-in-mocha-yemen/',image:'/assets/news/n03-mocha-lifeline.png'}
 ];
 const figuresData = [
   {
@@ -115,7 +115,7 @@ return <>
 <section className="hero" aria-roledescription="carousel" aria-label="Featured stories">
 <div className="hero-images" aria-live="off">{heroSlides.map((item,index)=><img key={item.image} className={`hero-photo ${index===slide?'is-active':''}`} src={item.image} alt={index===slide?item.alt:''} style={{objectPosition:item.position}} fetchPriority={index===0?'high':'auto'} aria-hidden={index!==slide}/>)}</div>
 <SiteHeader/>
-<main id="main" className="hero-story" key={slide}><div><p className="eyebrow light"><span/>{activeSlide.place}</p><h1>{activeSlide.title}</h1></div><div className="hero-summary"><p className="story-meta">{activeSlide.type} <span/>{activeSlide.date}</p><p>{activeSlide.summary}</p><a className="pill" href={base+activeSlide.url}>Read the story <ArrowRight size={19}/></a></div></main>
+<main id="main" className="hero-story" key={slide}><div><p className="eyebrow light"><span/>{activeSlide.place}</p><h1>{activeSlide.title}</h1></div><div className="hero-summary"><p className="story-meta">{activeSlide.type} <span/>{activeSlide.date}</p><p>{activeSlide.summary}</p><a className="pill" href={postHref(activeSlide.url)}>Read the story <ArrowRight size={19}/></a></div></main>
 <div className="hero-slider-controls"><button type="button" onClick={()=>moveSlide(-1)} aria-label="Previous featured story"><ChevronLeft/></button><div className="hero-dots" role="group" aria-label="Choose featured story">{heroSlides.map((item,index)=><button type="button" key={item.image} className={index===slide?'is-active':''} onClick={()=>goToSlide(index)} aria-label={`Show slide ${index+1}: ${item.place}`} aria-current={index===slide?'true':undefined}/>)}</div><span aria-live="polite">0{slide+1} / 0{heroSlides.length}</span><button type="button" onClick={()=>moveSlide(1)} aria-label="Next featured story"><ChevronRight/></button></div>
 <div className="hero-bottom"><span>Independent. Impartial. Neutral.</span><a href="#latest">Explore our stories <ArrowDown size={17}/></a></div>
 </section>
@@ -221,7 +221,7 @@ return <>
       role="region"
       aria-label="Latest news stories carousel"
     >
-      {stories.map(s=><article className="story" key={s.title}><a href={base+s.url}><div className="story-image"><img src={s.image} alt="" loading="lazy"/><span>{s.tag}</span></div><div className="story-copy"><p className="date">{s.date}</p><h3>{s.title}</h3><span className="read">Read story <ArrowRight size={20}/></span></div></a></article>)}
+      {stories.map(s=><article className="story" key={s.title}><a href={postHref(s.url)}><div className="story-image"><img src={s.image} alt="" loading="lazy"/><span>{s.tag}</span></div><div className="story-copy"><p className="date">{s.date}</p><h3>{s.title}</h3><span className="read">Read story <ArrowRight size={20}/></span></div></a></article>)}
     </div>
     <button
       type="button"

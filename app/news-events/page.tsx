@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { ArrowRight, ArrowDown, CalendarDays } from 'lucide-react';
 import SiteHeader from '@/components/site-header';
 import SiteFooter from '@/components/site-footer';
-import { base } from '@/lib/nav';
+import { base, postHref } from '@/lib/nav';
 import { hero, newsStories, previousEvents, newsletter } from '@/data/news';
 
 export const metadata: Metadata = {
@@ -40,7 +40,7 @@ export default function NewsEvents() {
           <div className="hero-summary">
             <p className="story-meta">Latest <span />{featured.date}</p>
             <p>{featured.title}</p>
-            <a className="pill" href={base + featured.url}>Read the story <ArrowRight size={19} /></a>
+            <a className="pill" href={postHref(featured.url)}>Read the story <ArrowRight size={19} /></a>
           </div>
         </div>
         <div className="hero-bottom"><span>News · Stories · Events</span><a href="#news-stories">Latest news <ArrowDown size={17} /></a></div>
@@ -65,7 +65,7 @@ export default function NewsEvents() {
             </div>
 
             <article className="news-featured">
-              <a href={base + featured.url}>
+              <a href={postHref(featured.url)}>
                 <div className="news-featured-image">
                   <img src={featured.image} alt="" width={526} height={398} />
                   <span className="news-tag">{featured.tag}</span>
@@ -82,7 +82,7 @@ export default function NewsEvents() {
             <div className="news-grid">
               {latest.map(p => (
                 <article className="story" key={p.url}>
-                  <a href={base + p.url}>
+                  <a href={postHref(p.url)}>
                     <div className="story-image"><img src={p.image} alt="" loading="lazy" width={526} height={398} /><span>{p.tag}</span></div>
                     <div className="story-copy">
                       <p className="date">{p.date}</p>
@@ -109,7 +109,7 @@ export default function NewsEvents() {
             <div className="events-grid">
               {previousEvents.posts.map(e => (
                 <article className="event-card" key={e.url}>
-                  <a href={base + e.url}>
+                  <a href={postHref(e.url)}>
                     <span className="event-card-image"><img src={e.image} alt="" loading="lazy" width={526} height={398} /></span>
                     <div className="event-card-body">
                       <span className="event-date"><CalendarDays size={15} aria-hidden="true" />{e.date}</span>
