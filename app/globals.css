@@ -1775,7 +1775,19 @@ html { scroll-padding-top: 72px; }
 }
 
 /* ───────── Contact us ───────── */
-.contact-hero .hero-images img { object-position: center 35%; }
+.contact-hero { min-height: clamp(660px, 78vh, 860px); }
+.contact-hero::after {
+  background: linear-gradient(0deg, rgba(0, 0, 0, .85) 0%, rgba(0, 0, 0, .32) 48%, rgba(0, 0, 0, .45) 100%),
+              linear-gradient(90deg, rgba(0, 0, 0, .4) 0%, transparent 60%);
+}
+.contact-hero .hero-images img {
+  object-fit: cover;
+  object-position: 22% 8%;
+  filter: contrast(1.04) brightness(1.02);
+}
+@media (max-width: 900px) {
+  .contact-hero .hero-images img { object-position: 20% 4%; }
+}
 .contact-details { padding-block: 90px 70px; }
 .contact-cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
 .contact-cards li { background: #f6f3ee; border-top: 4px solid var(--red); padding: 34px 30px; display: flex; flex-direction: column; gap: 12px; }

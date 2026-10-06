@@ -33,7 +33,12 @@ export default function ContactPage() {
 
       <section className="hero about-hero work-hero contact-hero" aria-labelledby="contact-title">
         <div className="hero-images about-slides" aria-hidden="true">
-          <img className="about-slide" src="https://msf-lebanon.org/wp-content/uploads/2021/11/MSF231560High.png" alt="" fetchPriority="high" />
+          <img
+            className="about-slide"
+            src="/assets/contact-hero-hq.webp"
+            alt="MSF staff member listening to a patient in an office consultation in Lebanon"
+            fetchPriority="high"
+          />
         </div>
         <SiteHeader />
         <div className="hero-story">
