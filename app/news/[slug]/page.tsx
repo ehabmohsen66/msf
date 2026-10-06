@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, ArrowDown, ArrowRight, ExternalLink, Share2, Mail } from 'lucide-react';
+import { ArrowLeft, ArrowDown, ArrowRight, Share2, Mail } from 'lucide-react';
 import SiteHeader from '@/components/site-header';
 import SiteFooter from '@/components/site-footer';
 import HtmlEmbed from '@/components/html-embed';
@@ -185,18 +185,6 @@ export default async function ArticlePage({ params }: PageProps) {
                 title="Share via Email"
               >
                 <Mail size={16} aria-hidden="true" />
-              </a>
-
-              {/* Canonical live link */}
-              <a
-                href={article.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="article-live-link"
-                title="Open original story on msf-lebanon.org"
-              >
-                <span>Live article</span>
-                <ExternalLink size={13} aria-hidden="true" />
               </a>
             </div>
           </div>

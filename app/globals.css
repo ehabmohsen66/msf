@@ -1951,27 +1951,6 @@ html { scroll-padding-top: 72px; }
   color: #fff;
   transform: translateY(-2px);
 }
-.article-live-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 14px;
-  border-radius: 999px;
-  background: #f6f3ee;
-  border: 1px solid #e0dad3;
-  font-size: 13px;
-  font-family: var(--font-heading), sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #444;
-  text-decoration: none;
-  transition: all .2s;
-  margin-left: 6px;
-}
-.article-live-link:hover {
-  border-color: #171717;
-  color: #171717;
-}
 
 .article-content-container {
   max-width: 820px;
