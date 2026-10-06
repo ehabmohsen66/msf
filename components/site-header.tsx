@@ -122,7 +122,7 @@ return (
       )}
     </form>
   </div>
-  <a className="pill nav-contact" href={base+'/contact-us/'}>Contact us</a>
+  <a className="pill nav-contact" href="/contact-us">Contact us</a>
   <div className="mobile-menu">
     <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
       <SheetTrigger aria-label="Open navigation"><Menu size={26}/></SheetTrigger>
@@ -174,7 +174,7 @@ return (
               </div>
             );
           })}
-          <a href={base + '/contact-us/'} className="mobile-single-link">
+          <a href="/contact-us" className="mobile-single-link">
             <span>Contact us</span>
             <ArrowRight size={18} />
           </a>
