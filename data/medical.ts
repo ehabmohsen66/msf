@@ -33,7 +33,7 @@ export const whatIsAmr = {
     linkUrl: 'https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(21)02724-0/fulltext',
     after: ', AMR was responsible for 1.27 million deaths worldwide, making it a leading global cause of mortality, with low-resource settings bearing the highest burdens.  AMR is an urgent global public health threat. It can affect individuals at any stage of life, as well as the healthcare, veterinary and agriculture industries. The direct consequences of infections caused by resistant microbes can be severe, resulting in increased morbidity, prolonged illnesses, extended hospital stays, higher costs and increased mortality.',
   },
-  stat: { value: '1.27 million', label: 'deaths worldwide caused by AMR in 2019 (Murray study)' },
+  stat: { value: '1.27 million', label: 'deaths worldwide caused by AMR in 2019', source: 'Murray study' },
 };
 
 export const facts = {

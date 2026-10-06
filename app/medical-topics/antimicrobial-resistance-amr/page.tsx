@@ -93,7 +93,7 @@ export default function AmrPage() {
         <div className="amr-stat-band">
           <div className="wrap">
             <p className="amr-stat-value">{whatIsAmr.stat.value}</p>
-            <p className="amr-stat-label">{whatIsAmr.stat.label}</p>
+            <div className="amr-stat-text"><p className="amr-stat-label">{whatIsAmr.stat.label}</p><p className="amr-stat-source">Source: {whatIsAmr.stat.source}</p></div>
           </div>
         </div>
 

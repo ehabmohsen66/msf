@@ -1649,9 +1649,24 @@ html { scroll-padding-top: 72px; }
 
 /* Stat band */
 .amr-stat-band { background: var(--red); color: #fff; }
-.amr-stat-band .wrap { display: flex; align-items: baseline; gap: 28px; flex-wrap: wrap; padding-block: 38px; }
+.amr-stat-band .wrap { display: flex; align-items: center; gap: 18px 32px; flex-wrap: wrap; padding-block: 38px; }
 .amr-stat-value { font-family: var(--font-heading), sans-serif; font-size: clamp(44px, 5vw, 72px); font-weight: 600; line-height: 1; margin: 0; letter-spacing: -1px; }
-.amr-stat-label { font-family: Georgia, serif; font-style: italic; font-size: 20px; margin: 0; max-width: 520px; }
+/* Label uses the same condensed heading face as the number so the band reads as one unit */
+.amr-stat-text { padding-left: 32px; border-left: 2px solid rgb(255 255 255 / 45%); }
+.amr-stat-label {
+  font-family: var(--font-heading), sans-serif; font-weight: 500;
+  font-size: clamp(22px, 2.2vw, 30px); line-height: 1.15;
+  text-transform: uppercase; letter-spacing: .5px;
+  margin: 0; max-width: 460px;
+}
+.amr-stat-source {
+  font-family: var(--font-heading), sans-serif; font-size: 13px;
+  letter-spacing: 2px; text-transform: uppercase;
+  margin: 8px 0 0; opacity: .8;
+}
+@media (max-width: 800px) {
+  .amr-stat-text { padding-left: 0; border-left: 0; }
+}
 
 /* Facts accordion (Elementor: Accordion widget) */
 .amr-facts { padding-block: 90px; }

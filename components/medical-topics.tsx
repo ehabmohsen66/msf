@@ -5,7 +5,7 @@ import { ArrowRight, Pill, ShieldCheck, Syringe } from 'lucide-react';
 
 import { base } from '@/lib/nav';
 
-/* AMR is rebuilt in this app; Insulin access and Patient Safety Day stay on the live site. */
+/* All three medical topics are now implemented locally in this demo app. */
 const href = (url: string, local?: boolean) => (local ? url : base + url);
 
 const topics = [
@@ -27,7 +27,8 @@ const topics = [
     title: 'Insulin access resource',
     text: 'Where to find insulin in Lebanon, emergency hotlines, patient communities and a free app for people living with diabetes.',
     cta: 'Find your insulin',
-    url: '/medical-topics/msf-lebanon-insulin-access-resource/',
+    url: '/medical-topics/msf-lebanon-insulin-access-resource',
+    local: true,
     image: '/assets/topic-insulin.jpg',
     alt: 'Siwar, who lives with type 1 diabetes, holds up her insulin pen among her toys in Arsal, Lebanon.',
     position: '20% 45%',
@@ -38,7 +39,8 @@ const topics = [
     title: 'World Patient Safety Day',
     text: 'Safe care for people living with chronic diseases, and how our teams adapt it to the realities of Egypt and Lebanon.',
     cta: 'Read the story',
-    url: '/medical-topics/world-patient-safety-day/',
+    url: '/medical-topics/world-patient-safety-day',
+    local: true,
     image: '/assets/topic-patient-safety.jpg',
     alt: 'An MSF team member talks with a patient outside a clinic.',
     position: '46% 40%',

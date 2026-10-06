@@ -44,8 +44,8 @@ export const navMenu: NavItem[] = [
     local: true,
     subItems: [
       { label: 'Antimicrobial Resistance (AMR)', url: '/medical-topics/antimicrobial-resistance-amr', local: true },
-      { label: 'Insulin Access Resource', url: '/medical-topics/msf-lebanon-insulin-access-resource/' },
-      { label: 'World Patient Safety Day', url: '/medical-topics/world-patient-safety-day/' },
+      { label: 'Insulin Access Resource', url: '/medical-topics/msf-lebanon-insulin-access-resource', local: true },
+      { label: 'World Patient Safety Day', url: '/medical-topics/world-patient-safety-day', local: true },
     ],
   },
 ];
