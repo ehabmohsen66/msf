@@ -3,10 +3,11 @@ import { ArrowRight, ArrowDown, CalendarDays } from 'lucide-react';
 import SiteHeader from '@/components/site-header';
 import SiteFooter from '@/components/site-footer';
 import { base, postHref } from '@/lib/nav';
+import LinkCards from '@/components/link-cards';
 import { hero, newsStories, previousEvents, newsletter } from '@/data/news';
 
 export const metadata: Metadata = {
-  title: 'News & events | MSF Lebanon',
+  title: 'News & reports | MSF Lebanon',
   description: 'The latest news, stories and events from Médecins Sans Frontières (MSF) in Lebanon and around the world.',
 };
 
@@ -15,12 +16,20 @@ export const metadata: Metadata = {
    Every section is a plain, self-contained block so it can be rebuilt 1:1 as an Elementor container;
    the two post lists map to Elementor Loop Grid / Posts widgets (News category, Events category). */
 const sections = [
-  ['news-stories', 'News & Stories'],
-  ['events', 'Previous Events'],
+  ['news-stories', 'Latest news'],
+  ['events', 'Events'],
+  ['reports', 'Reports & resources'],
   ['newsletter', 'Newsletter'],
 ] as const;
 
 const [featured, ...latest] = newsStories.posts;
+
+/* Reports and resources. Paths are on the live site; the LinkCards component adds the base URL. */
+const reports = [
+  { title: 'International Activity Report 2025', text: 'What our teams saw, what they did and how the work was funded in 2025.', image: '/assets/report-cover.jpg', alt: 'Cover of the MSF International Activity Report 2025.', url: '/news/international-activity-report-2025/', tag: 'Annual report', cta: 'Read the report' },
+  { title: 'The Broken Lens: Antimicrobial Resistance in Humanitarian Settings', text: 'How resistance to antibiotics takes hold in crisis settings, and what needs to change.', image: '/assets/topic-amr.jpg', alt: 'An MSF staff member helps a patient on crutches walk down a hospital corridor.', url: '/news/the-broken-lens-antimicrobial-resistance-in-humanitarian-settings/', tag: 'Research', cta: 'Read the research' },
+  { title: 'Research & publications', text: 'Peer-reviewed studies and technical papers from MSF teams in Lebanon and the region.', image: '/assets/work-lebanon.jpg', alt: 'An MSF staff member in Beirut, Lebanon.', url: '/news-events/research-publications/', tag: 'Resources', cta: 'Browse publications' },
+];
 
 export default function NewsEvents() {
   return (
@@ -35,7 +44,7 @@ export default function NewsEvents() {
         <div className="hero-story">
           <div>
             <p className="eyebrow light"><span />Médecins Sans Frontières</p>
-            <h1 id="news-title">News &amp;<br />events</h1>
+            <h1 id="news-title">News &amp;<br />reports</h1>
           </div>
           <div className="hero-summary">
             <p className="story-meta">Latest <span />{featured.date}</p>
@@ -43,7 +52,7 @@ export default function NewsEvents() {
             <a className="pill" href={postHref(featured.url)}>Read the story <ArrowRight size={19} /></a>
           </div>
         </div>
-        <div className="hero-bottom"><span>News · Stories · Events</span><a href="#news-stories">Latest news <ArrowDown size={17} /></a></div>
+        <div className="hero-bottom"><span>Latest news · Events · Reports</span><a href="#news-stories">Latest news <ArrowDown size={17} /></a></div>
       </section>
 
       <nav className="about-anchors" aria-label="On this page">
@@ -59,7 +68,7 @@ export default function NewsEvents() {
             <div className="section-heading">
               <div>
                 <p className="eyebrow">01 · Latest from the field</p>
-                <h2 id="news-heading">News &amp; Stories</h2>
+                <h2 id="news-heading">Latest news</h2>
               </div>
               <a className="text-link" href={base + newsStories.viewAll}>View All News <ArrowRight size={20} /></a>
             </div>
@@ -102,7 +111,7 @@ export default function NewsEvents() {
             <div className="section-heading">
               <div>
                 <p className="eyebrow">02 · In Lebanon</p>
-                <h2 id="events-heading">Previous Events</h2>
+                <h2 id="events-heading">Events</h2>
               </div>
               <a className="text-link" href={base + previousEvents.viewAll}>View All Events <ArrowRight size={20} /></a>
             </div>
@@ -123,11 +132,25 @@ export default function NewsEvents() {
           </div>
         </section>
 
-        {/* 03 Newsletter (Elementor: full-width red container, Heading + Button) */}
+        {/* 03 Reports & resources: annual and advocacy reports, plus research. Add new cards here as they are published. */}
+        <section className="reports-section" id="reports" aria-labelledby="reports-heading">
+          <div className="wrap">
+            <div className="section-heading">
+              <div>
+                <p className="eyebrow">03 · Reports &amp; resources</p>
+                <h2 id="reports-heading">Reports &amp; resources</h2>
+              </div>
+              <a className="text-link" href={base + '/news-events/research-publications/'}>All research &amp; publications <ArrowRight size={20} /></a>
+            </div>
+            <LinkCards columns={3} cards={reports} />
+          </div>
+        </section>
+
+        {/* 04 Newsletter (Elementor: full-width red container, Heading + Button) */}
         <section className="newsletter-band" id="newsletter" aria-labelledby="newsletter-heading">
           <div className="wrap">
             <div>
-              <p className="eyebrow">03 · Stay connected</p>
+              <p className="eyebrow">04 · Stay connected</p>
               <h2 id="newsletter-heading">{newsletter.title}?</h2>
             </div>
             <a className="pill" href={base + newsletter.url}>{newsletter.cta} <ArrowRight size={19} /></a>

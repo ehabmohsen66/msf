@@ -1,7 +1,8 @@
 export const base = 'https://msf-lebanon.org';
 
-/* `local: true` items live in this app; everything else still links to the live site. */
-export type NavLink = { label: string; url: string; local?: boolean };
+/* `local: true` items live in this app; everything else still links to the live site.
+   `indent: true` marks a sub-item that belongs under the item above it (shown indented). */
+export type NavLink = { label: string; url: string; local?: boolean; indent?: boolean };
 export type NavItem = NavLink & { subItems: NavLink[] };
 
 /* Resolves a menu link to either this app or the live site. */
@@ -16,20 +17,24 @@ export const postHref = (url: string): string => {
   return base + url;
 };
 
+/* Main tabs, in the client's order: About us · Work with us · News & reports · In Focus · Medical topics.
+   In Focus uses the white-ribbon space freed by moving Contact us to the black ribbon. */
 export const navMenu: NavItem[] = [
   {
     label: 'About us',
     url: '/about-us',
     local: true,
     subItems: [
-      { label: 'MSF History', url: '/about-us#msf-history', local: true },
+      { label: 'Our history & principles', url: '/about-us#msf-history', local: true },
       { label: 'MSF in Lebanon', url: '/about-us#msf-in-lebanon', local: true },
-      { label: 'MSF in the Field', url: '/about-us#msf-in-the-field', local: true },
+      { label: 'Humanitarian & medical activities', url: '/what-we-do/msf-in-the-field/mena/lebanon/', indent: true },
+      { label: 'MSF Lebanon Branch Office', url: '/about-us/msf-office-in-lebanon/', indent: true },
+      { label: 'Where we work', url: '/#where-we-work', local: true },
     ],
   },
   {
     label: 'Work with us',
-    url: '/work-with-us',
+    url: '/#work-with-us',
     local: true,
     subItems: [
       { label: 'Local Vacancies', url: '/work-with-us#vacancies', local: true },
@@ -38,13 +43,22 @@ export const navMenu: NavItem[] = [
     ],
   },
   {
-    label: 'News & events',
+    label: 'News & reports',
     url: '/news-events',
     local: true,
     subItems: [
-      { label: 'News & Stories', url: '/news-events#news-stories', local: true },
-      { label: 'Research & Publications', url: '/news-events/research-publications/' },
+      { label: 'Latest news', url: '/news-events#news-stories', local: true },
       { label: 'Events', url: '/news-events#events', local: true },
+      { label: 'Reports & resources', url: '/news-events#reports', local: true },
+    ],
+  },
+  {
+    label: 'In Focus',
+    url: '/in-focus',
+    local: true,
+    subItems: [
+      { label: 'Crises & emergencies', url: '/in-focus#crises', local: true },
+      { label: 'Creative projects', url: '/in-focus#creative', local: true },
     ],
   },
   {
@@ -58,3 +72,4 @@ export const navMenu: NavItem[] = [
     ],
   },
 ];
+

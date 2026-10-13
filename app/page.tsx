@@ -5,6 +5,7 @@ import WorldMap from '@/components/world-map';
 import ActivityReport from '@/components/activity-report';
 import MedicalTopics from '@/components/medical-topics';
 import CareersIntro from '@/components/careers-intro';
+import InFocus from '@/components/in-focus';
 import SiteHeader from '@/components/site-header';
 import SiteFooter from '@/components/site-footer';
 import CountUpNumber from '@/components/count-up';
@@ -146,31 +147,32 @@ return <>
     </div>
   </div>
 </section>
-<section className="about-feature wrap" id="about-msf" aria-labelledby="about-heading">
-  <div className="about-field">
-    <img src="/assets/figure-consultations.jpg" alt="An MSF staff member wearing blue gloves takes notes while sitting beside a woman in a room with beds and personal belongings." loading="lazy" width="2000" height="1333"/>
-    <p className="about-field-label">Medical care, without borders</p>
-    <div className="about-field-caption">
-      <span className="about-field-rule" aria-hidden="true"/>
-      <h2 id="about-heading">Alongside<br/>people.</h2>
-      <p>Wherever the need is greatest.</p>
+<InFocus/>
+<section className="careers-section" id="work-with-us" aria-labelledby="careers-heading">
+  <div className="wrap">
+    <CareersIntro/>
+
+    <div className="careers-paths">
+      <a className="career-path" href={base + '/work-with-us/local-vacancies/'}>
+        <img src="/assets/work-lebanon.jpg" alt="An MSF staff member in Beirut, Lebanon" loading="lazy" width="2560" height="1561" style={{objectPosition:'50% 35%'}}/>
+        <span className="career-path-label"><span>01</span><MapPin size={15} aria-hidden="true"/>In Lebanon</span>
+        <div className="career-path-body">
+          <h3>Work in Lebanon</h3>
+          <p>Join our teams providing emergency aid, mental health support and chronic disease care to vulnerable communities across Lebanon.</p>
+          <span className="career-path-cta">Explore local vacancies <span className="career-path-arrow"><ArrowRight size={20} aria-hidden="true"/></span></span>
+        </div>
+      </a>
+
+      <a className="career-path" href={base + '/work-with-us/overseas-vacancies/'}>
+        <img src="/assets/work-overseas.jpg" alt="MSF hygienists in protective equipment at the Ebola isolation centre in Butembo, DR Congo" loading="lazy" width="2560" height="1707" style={{objectPosition:'38% 30%'}}/>
+        <span className="career-path-label"><span>02</span><Plane size={15} aria-hidden="true"/>Worldwide</span>
+        <div className="career-path-body">
+          <h3>Work overseas</h3>
+          <p>Deploy with MSF to conflict zones, natural disasters and remote communities, and bring your expertise to frontline humanitarian action.</p>
+          <span className="career-path-cta">See international roles <span className="career-path-arrow"><ArrowRight size={20} aria-hidden="true"/></span></span>
+        </div>
+      </a>
     </div>
-  </div>
-  <div className="about-feature-content">
-    <article aria-labelledby="who-heading">
-      <p className="about-kicker">Our organisation</p>
-      <h3 id="who-heading">Who We Are</h3>
-      <p>We are Médecins Sans Frontières — Doctors Without Borders. An independent, international medical humanitarian organisation bringing together medical professionals, logisticians and many others to assist people in crisis.</p>
-      <p>Medical ethics, impartiality, independence and neutrality guide everything we do.</p>
-      <a className="about-feature-link" href="/about-us">Discover MSF <span><ArrowRight size={20} aria-hidden="true"/></span></a>
-    </article>
-    <article aria-labelledby="what-heading">
-      <p className="about-kicker">Our medical action</p>
-      <h3 id="what-heading">What We Do</h3>
-      <p>We provide medical care to people affected by conflict, epidemics, disasters and exclusion from healthcare. Our teams respond to emergencies and support communities facing barriers to care.</p>
-      <p>In Lebanon and around the world, our patients come first.</p>
-      <a className="about-feature-link" href={base+'/what-we-do/'}>Explore our medical work <span><ArrowRight size={20} aria-hidden="true"/></span></a>
-    </article>
   </div>
 </section>
 <section className="latest wrap" id="latest">
@@ -242,31 +244,31 @@ return <>
 </div></section>
 <WorldMap/>
 <MedicalTopics/>
-<section className="careers-section" id="work-with-msf" aria-labelledby="careers-heading">
-  <div className="wrap">
-    <CareersIntro/>
-
-    <div className="careers-paths">
-      <a className="career-path" href={base + '/work-with-us/local-vacancies/'}>
-        <img src="/assets/work-lebanon.jpg" alt="An MSF staff member in Beirut, Lebanon" loading="lazy" width="2560" height="1561" style={{objectPosition:'50% 35%'}}/>
-        <span className="career-path-label"><span>01</span><MapPin size={15} aria-hidden="true"/>In Lebanon</span>
-        <div className="career-path-body">
-          <h3>Work in Lebanon</h3>
-          <p>Join our teams providing emergency aid, mental health support and chronic disease care to vulnerable communities across Lebanon.</p>
-          <span className="career-path-cta">Explore local vacancies <span className="career-path-arrow"><ArrowRight size={20} aria-hidden="true"/></span></span>
-        </div>
-      </a>
-
-      <a className="career-path" href={base + '/work-with-us/overseas-vacancies/'}>
-        <img src="/assets/work-overseas.jpg" alt="MSF hygienists in protective equipment at the Ebola isolation centre in Butembo, DR Congo" loading="lazy" width="2560" height="1707" style={{objectPosition:'38% 30%'}}/>
-        <span className="career-path-label"><span>02</span><Plane size={15} aria-hidden="true"/>Worldwide</span>
-        <div className="career-path-body">
-          <h3>Work overseas</h3>
-          <p>Deploy with MSF to conflict zones, natural disasters and remote communities, and bring your expertise to frontline humanitarian action.</p>
-          <span className="career-path-cta">See international roles <span className="career-path-arrow"><ArrowRight size={20} aria-hidden="true"/></span></span>
-        </div>
-      </a>
+<section className="about-feature wrap" id="about-msf" aria-labelledby="about-heading">
+  <div className="about-field">
+    <img src="/assets/figure-consultations.jpg" alt="An MSF staff member wearing blue gloves takes notes while sitting beside a woman in a room with beds and personal belongings." loading="lazy" width="2000" height="1333"/>
+    <p className="about-field-label">Medical care, without borders</p>
+    <div className="about-field-caption">
+      <span className="about-field-rule" aria-hidden="true"/>
+      <h2 id="about-heading">Alongside<br/>people.</h2>
+      <p>Wherever the need is greatest.</p>
     </div>
+  </div>
+  <div className="about-feature-content">
+    <article aria-labelledby="who-heading">
+      <p className="about-kicker">Our organisation</p>
+      <h3 id="who-heading">Who We Are</h3>
+      <p>We are Médecins Sans Frontières — Doctors Without Borders. An independent, international medical humanitarian organisation bringing together medical professionals, logisticians and many others to assist people in crisis.</p>
+      <p>Medical ethics, impartiality, independence and neutrality guide everything we do.</p>
+      <a className="about-feature-link" href="/about-us">Discover MSF <span><ArrowRight size={20} aria-hidden="true"/></span></a>
+    </article>
+    <article aria-labelledby="what-heading">
+      <p className="about-kicker">Our medical action</p>
+      <h3 id="what-heading">What We Do</h3>
+      <p>We provide medical care to people affected by conflict, epidemics, disasters and exclusion from healthcare. Our teams respond to emergencies and support communities facing barriers to care.</p>
+      <p>In Lebanon and around the world, our patients come first.</p>
+      <a className="about-feature-link" href={base+'/what-we-do/'}>Explore our medical work <span><ArrowRight size={20} aria-hidden="true"/></span></a>
+    </article>
   </div>
 </section>
 <SiteFooter/>

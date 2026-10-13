@@ -69,7 +69,7 @@ export default async function ArticlePage({ params }: PageProps) {
         <div className="hero-story">
           <div>
             <nav className="amr-breadcrumb" aria-label="Breadcrumb">
-              <Link href="/news-events">News &amp; Events</Link>
+              <Link href="/news-events">News &amp; Reports</Link>
               {article.country && (
                 <>
                   <span aria-hidden="true">/</span>

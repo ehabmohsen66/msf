@@ -2,7 +2,7 @@ import { runnerStrokes } from '@/components/msf-runner-strokes';
 
 const roles = ['Doctors & surgeons', 'Nurses & midwives', 'Logisticians', 'Pharmacists', 'Mental health', 'Administrators'];
 
-/* The plain running man from the logo, used small in front of "Work with MSF". */
+/* The plain running man from the logo, used small in front of "Work with us". */
 function StillRunner() {
   return (
     <svg className="careers-eyebrow-runner" viewBox="-1 -1 91 70" aria-hidden="true" focusable="false">
@@ -15,7 +15,7 @@ export default function CareersIntro() {
   return (
     <div className="careers-intro">
       <div>
-        <p className="eyebrow careers-eyebrow"><StillRunner />Work with MSF</p>
+        <p className="eyebrow careers-eyebrow"><StillRunner />Work with us</p>
         <h2 id="careers-heading" className="careers-title">Your skills<br />can save lives.</h2>
       </div>
       <div className="careers-intro-copy">

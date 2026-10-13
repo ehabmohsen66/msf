@@ -1028,7 +1028,7 @@ a[lang=ar] {
   .topic-panel-text { font-size: 17px; }
 }
 
-/* Work with MSF: a small running man from the logo leads the eyebrow. */
+/* Work with us: a small running man from the logo leads the eyebrow. */
 .careers-eyebrow-runner {
   width: 34px;
   height: 26px;
@@ -1036,7 +1036,7 @@ a[lang=ar] {
 }
 .careers-eyebrow-runner path { fill: var(--red); }
 
-/* Tighter rhythm between Medical topics and Work with MSF */
+/* Tighter rhythm between Medical topics and Work with us */
 .topics-section { padding-bottom: 84px; }
 .careers-section { padding-block: 80px 88px; }
 .careers-intro { padding-bottom: 44px; margin-bottom: 44px; }
@@ -2163,3 +2163,17 @@ html { scroll-padding-top: 72px; }
     align-items: flex-start;
   }
 }
+
+/* ───────── Main tabs review: In Focus pill, indented sub-items, Reports & resources ───────── */
+/* Contact us moved to the black ribbon; In Focus is a regular tab in the white ribbon. */
+.nav-dropdown a.is-indent{padding-left:44px;font-size:14px;color:#555}
+.nav-dropdown a.is-indent:hover{padding-left:50px}
+.mobile-nav-sublinks a.is-indent{padding-left:18px;font-size:14px;color:#666}
+.reports-section{background:#f3f3f3;padding-block:90px}
+
+/* In Focus page cards: keep the summary off the CTA */
+.story-copy .story-text{margin:0 0 22px;color:#444;line-height:1.55}
+/* Homepage rhythm after the reorder: no double padding between neighbouring white sections */
+#in-focus{padding-top:48px}
+#medical-topics + .about-feature{padding-top:8px}
+@media(max-width:800px){#in-focus{padding-top:32px}#medical-topics + .about-feature{padding-top:0}}

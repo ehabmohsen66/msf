@@ -9,7 +9,7 @@ import LinkCards from '@/components/link-cards';
 import { base } from '@/lib/nav';
 import {
   heroSlides, hubIntro, whoWeAre, stats, charter, historyIntro,
-  principles, lebanonCards, fieldBanner, fieldCards,
+  principles, lebanonCards,
 } from '@/data/about';
 
 export const metadata: Metadata = {
@@ -17,8 +17,8 @@ export const metadata: Metadata = {
   description: hubIntro,
 };
 
-/* Page structure mirrors the live "About us" menu: MSF History (who we are, charter, history, principles),
-   MSF in Lebanon and MSF in the Field. Every section is a plain, self-contained block so it can be rebuilt
+/* Page structure mirrors the live "About us" menu: MSF History (who we are, charter, history, principles)
+   and MSF in Lebanon. MSF in the Field now sits behind the Where we work link on the homepage. Every section is a plain, self-contained block so it can be rebuilt
    1:1 as an Elementor container. */
 const sections = [
   ['msf-history', 'MSF History'],
@@ -26,7 +26,6 @@ const sections = [
   ['history', 'Our History'],
   ['principles', 'Our Principles'],
   ['msf-in-lebanon', 'MSF in Lebanon'],
-  ['msf-in-the-field', 'MSF in the Field'],
 ] as const;
 
 export default function AboutUs() {
@@ -171,22 +170,6 @@ export default function AboutUs() {
           </div>
         </section>
 
-        {/* 06 MSF in the Field */}
-        <section className="about-cards-section" id="msf-in-the-field" aria-labelledby="field-heading">
-          <figure className="field-banner">
-            <img src={fieldBanner.image} alt={fieldBanner.alt} width={2880} height={932} loading="lazy" />
-          </figure>
-          <div className="wrap">
-            <div className="section-heading">
-              <div>
-                <p className="eyebrow">06 · What we do</p>
-                <h2 id="field-heading">MSF in the Field</h2>
-              </div>
-              <a className="text-link" href={base + '/what-we-do/msf-in-the-field/'}>MSF in the Field <ArrowRight size={20} /></a>
-            </div>
-            <LinkCards cards={fieldCards} />
-          </div>
-        </section>
       </main>
 
       <SiteFooter />
