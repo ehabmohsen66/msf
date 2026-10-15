@@ -2201,19 +2201,53 @@ html { scroll-padding-top: 72px; }
 .rtl-layout h2,
 .rtl-layout h3,
 .rtl-layout h4,
+.rtl-layout h5,
+.rtl-layout h6,
+.rtl-layout p,
+.rtl-layout span,
+.rtl-layout a,
+.rtl-layout button,
+.rtl-layout input,
+.rtl-layout select,
+.rtl-layout textarea,
 .rtl-layout .eyebrow,
 .rtl-layout .topic-panel-title,
+.rtl-layout .topic-panel-label,
+.rtl-layout .topic-panel-cta,
+.rtl-layout .career-path-label,
+.rtl-layout .career-path-cta,
 .rtl-layout .story h3,
 .rtl-layout .figure-label,
+.rtl-layout .figure-value,
 .rtl-layout .nav-item-link,
 .rtl-layout .hero-story h1,
 .rtl-layout .commemorative-description,
 .rtl-layout .report-cover-box h3,
 .rtl-layout .report-index-title,
-.rtl-layout .about-field-caption h2 {
+.rtl-layout .about-field-caption h2,
+.rtl-layout .pill,
+.rtl-layout .text-link {
   font-family: 'Tajawal', sans-serif !important;
   font-feature-settings: normal;
   letter-spacing: normal !important;
+}
+
+.rtl-layout .topic-panel-label {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+.rtl-layout .topic-panel-label > span {
+  padding-right: 0;
+  padding-left: 10px;
+  border-right: none;
+  border-left: 1px solid rgb(255 255 255 / 40%);
+}
+
+.rtl-layout .career-path-label > span {
+  padding-right: 0;
+  padding-left: 10px;
+  border-right: none;
+  border-left: 1px solid rgb(255 255 255 / 40%);
 }
 
 .rtl-layout .eyebrow {
