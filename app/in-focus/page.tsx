@@ -62,7 +62,7 @@ export default function InFocusPage() {
                   {items.map(f => (
                     <article className="story" key={f.url}>
                       <a href={postHref(f.url)}>
-                        <div className="story-image"><img src={f.image} alt={f.alt} loading="lazy" width={526} height={398} /><span>{f.label}</span></div>
+                        <div className="story-image"><img src={f.image} alt={f.alt} loading="lazy" width={1200} height={800} /><span>{f.label}</span></div>
                         <div className="story-copy">
                           <h3>{f.title}</h3>
                           <p className="story-text">{f.text}</p>

@@ -21,8 +21,8 @@ export const focusItems: FocusItem[] = [
     cta: 'Read the response',
     url: '/news/lebanon-msf-scales-up-response-as-displacement-rises-across-the-country/',
     image: '/assets/focus-lebanon.png',
-    alt: 'An MSF tent and waiting area at a clinic in Lebanon, with people sitting outside.',
-    position: '50% 50%',
+    alt: 'MSF staff members in branded vests speaking with displaced people outside a shelter in Lebanon.',
+    position: '38% 30%',
   },
   {
     group: 'crises',
@@ -32,8 +32,8 @@ export const focusItems: FocusItem[] = [
     cta: 'Read the story',
     url: '/news/gazas-man-made-malnutrition-crisis/',
     image: '/assets/focus-gaza.png',
-    alt: 'A newborn with low birth weight in an incubator at Al-Helou Hospital in Gaza City.',
-    position: '50% 50%',
+    alt: 'MSF nurse Mohammed Shehada checks on a newborn in an incubator at Al-Helou Hospital in Gaza City.',
+    position: '50% 40%',
   },
   {
     group: 'crises',
@@ -43,8 +43,8 @@ export const focusItems: FocusItem[] = [
     cta: 'Read the story',
     url: '/news/ebola-and-drc-msf-responds-to-ituri-outbreak/',
     image: '/assets/focus-ebola.png',
-    alt: 'A health worker in protective equipment walks between isolation tents at an Ebola treatment area.',
-    position: '50% 50%',
+    alt: 'A health worker in protective biohazard equipment walks between isolation tents at an Ebola treatment centre in Bunia, DR Congo.',
+    position: '50% 25%',
   },
   {
     group: 'creative',
@@ -55,6 +55,6 @@ export const focusItems: FocusItem[] = [
     url: '/news-events/news-stories/a-brush-with-memory-between-home-and-displacement/', // a WordPress page, so it stays on the live site
     image: '/assets/focus-brush.png',
     alt: 'Illustration of a woman in a headscarf sitting beside a wood stove in a living room.',
-    position: '50% 40%',
+    position: '50% 35%',
   },
 ];
