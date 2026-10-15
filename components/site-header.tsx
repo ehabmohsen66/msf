@@ -61,7 +61,7 @@ const handleSearchSubmit=(e:React.FormEvent)=>{
 
 return (
 <header className="masthead">
-<div className="utility"><span className="edition">MÉDECINS SANS FRONTIÈRES · LEBANON</span><div><a href="/contact-us">Contact us</a><a href="https://www.msf.org">MSF worldwide <Globe size={14}/></a><a href={base+'/ar/home-ar/'} lang="ar" dir="rtl">العربية</a></div></div>
+<div className="utility"><span className="edition">MÉDECINS SANS FRONTIÈRES · LEBANON</span><div><a href="/contact-us">Contact us</a><a href="https://www.msf.org">MSF worldwide <Globe size={14}/></a><a href="/ar" lang="ar" dir="rtl">العربية</a></div></div>
 <div className="main-nav">
   <a href="/" className="brand" aria-label="MSF Lebanon home"><img src="/assets/logo.svg" alt="Médecins Sans Frontières — أطباء بلا حدود"/></a>
   <nav aria-label="Main navigation">

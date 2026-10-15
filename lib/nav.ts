@@ -73,3 +73,69 @@ export const navMenu: NavItem[] = [
   },
 ];
 
+export const navMenuAr: NavItem[] = [
+  {
+    label: 'من نحن',
+    url: '/ar#about-msf',
+    local: true,
+    subItems: [
+      { label: 'حركة أطباء بلا حدود', url: 'https://msf-lebanon.org/ar/%d9%85%d9%86-%d9%86%d8%ad%d9%86/%d8%ad%d8%b1%d9%83%d8%a9-%d8%a3%d8%b7%d8%a8%d8%a7%d8%a1-%d8%a8%d9%84%d8%a7-%d8%ad%d8%af%d9%88%d8%af/' },
+      { label: 'أطباء بلا حدود في لبنان', url: 'https://msf-lebanon.org/ar/%d8%a7%d8%b7%d8%a8%d8%a7%d8%a1-%d8%a8%d9%84%d8%a7-%d8%ad%d8%af%d9%88%d8%af-%d9%81%d9%8a-%d9%84%d8%a8%d9%86%d8%a7%d9%86/' },
+      { label: 'مكتب فرع لبنان', url: 'https://msf-lebanon.org/ar/%d9%85%d9%86-%d9%86%d8%ad%d9%86/%d9%85%d9%83%d8%aa%d8%a8-%d9%84%d8%a8%d9%86%d8%a7%d9%86/', indent: true },
+      { label: 'قابل الفريق', url: 'https://msf-lebanon.org/ar/%d9%85%d9%86-%d9%86%d8%ad%d9%86/%d9%82%d8%a7%d8%a8%d9%84-%d8%a7%d9%84%d9%81%d8%b1%d9%8a%d9%82/', indent: true },
+      { label: 'أين نعمل', url: '/ar#where-we-work', local: true },
+    ],
+  },
+  {
+    label: 'كيف نعمل',
+    url: 'https://msf-lebanon.org/ar/%d9%83%d9%8a%d9%81-%d9%86%d8%b9%d9%85%d9%84/',
+    subItems: [
+      { label: 'أطباء بلا حدود في الميدان', url: 'https://msf-lebanon.org/ar/%d9%83%d9%8a%d9%81-%d9%86%d8%b9%d9%85%d9%84/%d9%81%d9%8a-%d8%a7%d9%84%d9%85%d9%8a%d8%af%d8%a7%d9%86/' },
+      { label: 'أنشطة مكتب لبنان', url: 'https://msf-lebanon.org/ar/%d9%83%d9%8a%d9%81-%d9%86%d8%b9%d9%85%d9%84/%d8%a3%d9%86%d8%b4%d8%b7%d8%a9-%d9%85%d9%83%d8%aa%d8%a8-%d9%84%d8%a8%d9%86%d8%a7%d9%86/' },
+      { label: 'الشرق الأوسط وشمال أفريقيا', url: 'https://msf-lebanon.org/ar/%d9%83%d9%8a%d9%81-%d9%86%d8%b9%d9%85%d9%84/%d9%81%d9%8a-%d8%a7%d9%84%d9%85%d9%8a%d8%af%d8%a7%d9%86/%d8%a7%d9%84%d8%b4%d8%b1%d9%82-%d8%a7%d9%84%d8%a7%d9%88%d8%b3%d8%b7-%d9%88%d8%b4%d9%85%d8%a7%d9%84-%d8%a7%d9%81%d8%b1%d9%8a%d9%82%d9%8a%d8%a7/' },
+    ],
+  },
+  {
+    label: 'اعمل معنا',
+    url: '/ar#work-with-us',
+    local: true,
+    subItems: [
+      { label: 'وظائف محلية', url: 'https://msf-lebanon.org/ar/%d8%a7%d8%b9%d9%85%d9%84-%d9%85%d8%b9%d9%86%d8%a7/%d9%88%d8%b8%d8%a7%d8%a6%d9%81-%d9%85%d8%ad%d9%84%d9%8a%d8%a9/' },
+      { label: 'وظائف في الخارج', url: 'https://msf-lebanon.org/ar/%d8%a7%d8%b9%d9%85%d9%84-%d9%85%d8%b9%d9%86%d8%a7/%d9%88%d8%b8%d8%a7%d8%a6%d9%81-%d9%81%d9%8a-%d8%a7%d9%84%d8%ae%d8%a7%d8%b1%d8%ac/' },
+      { label: 'الحياة في الميدان', url: 'https://msf-lebanon.org/ar/%d8%a7%d8%b9%d9%85%d9%84-%d9%85%d8%b9%d9%86%d8%a7/%d8%a7%d9%84%d8%ad%d9%8a%d8%a7%d8%a9-%d9%81%d9%8a-%d8%a7%d9%84%d9%85%d9%8a%d8%af%d8%a7%d9%86/' },
+      { label: 'استمارة التقديم', url: 'https://msf-lebanon.org/ar/%d8%a7%d8%b3%d8%aa%d9%85%d8%a7%d8%b1%d8%a9-%d8%a7%d9%84%d8%aa%d9%82%d8%af%d9%8a%d9%85/', indent: true },
+    ],
+  },
+  {
+    label: 'الأخبار والأنشطة',
+    url: 'https://msf-lebanon.org/ar/%d8%a7%d9%84%d8%a3%d8%ae%d8%a8%d8%a7%d8%b1-%d9%88%d8%a7%d9%84%d8%a3%d9%86%d8%b4%d8%b7%d8%a9/',
+    subItems: [
+      { label: 'آخر الأخبار والقصص', url: '/ar#latest', local: true },
+      { label: 'الأنشطة والفعاليات', url: 'https://msf-lebanon.org/ar/%d8%a7%d9%84%d8%a3%d8%ae%d8%a8%d8%a7%d8%b1-%d9%88%d8%a7%d9%84%d8%a3%d9%86%d8%b4%d8%b7%d8%a9/%d8%a7%d9%84%d8%a3%d9%86%d8%b4%d8%b7%d8%a9/' },
+      { label: 'نشرة لحظة', url: 'https://msf-lebanon.org/ar/%d8%a7%d9%84%d8%a3%d8%ae%d8%a8%d8%a7%d8%b1-%d9%88%d8%a7%d9%84%d8%a3%d9%86%d8%b4%d8%b7%d8%a9/%d9%86%d8%b4%d8%b1%d8%a9-%d9%84%d8%ad%d8%b8%d8%a9/' },
+      { label: 'البحوث والمنشورات', url: 'https://msf-lebanon.org/ar/%d8%a7%d9%84%d8%a3%d8%ae%d8%a8%d8%a7%d8%b1-%d9%88%d8%a7%d9%84%d8%a3%d9%86%d8%b4%d8%b7%d8%a9/%d8%a7%d9%84%d8%a8%d8%ad%d9%88%d8%ab-%d9%88%d8%a7%d9%84%d9%85%d9%86%d8%b4%d9%88%d8%b1%d8%a7%d8%aa/' },
+    ],
+  },
+  {
+    label: 'في بؤرة الضوء',
+    url: '/ar#in-focus',
+    local: true,
+    subItems: [
+      { label: 'استجابة حرب لبنان', url: '/ar#in-focus', local: true },
+      { label: 'حرب غزة', url: '/ar#in-focus', local: true },
+      { label: 'استجابة إيبولا', url: '/ar#in-focus', local: true },
+      { label: 'ضربة فرشاة مع الذاكرة', url: 'https://msf-lebanon.org/ar/news-events/news-stories/a-brush-with-memory-between-home-and-displacement/' },
+    ],
+  },
+  {
+    label: 'مواضيع طبية',
+    url: '/ar#medical-topics',
+    local: true,
+    subItems: [
+      { label: 'مقاومة مضادات الميكروبات', url: '/ar#medical-topics', local: true },
+      { label: 'دليل الوصول إلى الأنسولين', url: '/ar#medical-topics', local: true },
+      { label: 'اليوم العالمي لسلامة المرضى', url: '/ar#medical-topics', local: true },
+    ],
+  },
+];
+
