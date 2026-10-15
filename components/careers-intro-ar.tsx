@@ -26,7 +26,7 @@ export default function CareersIntroAr() {
           اعمل معنا
         </p>
         <h2 id="careers-heading-ar" className="careers-title">
-          مهاراتك<br />تصنع الفرق وتنقذ الأرواح.
+          مهاراتك تصنع الفرق<br />وتنقذ الأرواح.
         </h2>
       </div>
       <div className="careers-intro-copy">

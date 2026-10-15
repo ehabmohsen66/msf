@@ -2232,6 +2232,15 @@ html { scroll-padding-top: 72px; }
   letter-spacing: normal !important;
 }
 
+.rtl-layout .careers-title {
+  line-height: 1.35 !important;
+}
+
+.rtl-layout h1,
+.rtl-layout h2 {
+  line-height: 1.3;
+}
+
 .rtl-layout .topic-panel-label {
   flex-direction: row-reverse;
   justify-content: flex-end;
