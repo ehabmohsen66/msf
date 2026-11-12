@@ -2,7 +2,6 @@
 
 import { useEffect, useState, useRef } from 'react';
 import WorldMapAr from '@/components/world-map-ar';
-import ActivityReportAr from '@/components/activity-report-ar';
 import MedicalTopicsAr from '@/components/medical-topics-ar';
 import CareersIntroAr from '@/components/careers-intro-ar';
 import InFocusAr from '@/components/in-focus-ar';
@@ -333,8 +332,6 @@ export default function HomeAr() {
         </div>
       </section>
 
-      {/* Activity Report */}
-      <ActivityReportAr />
 
       {/* Numbers Section */}
       <section className="numbers-section" id="msf-in-numbers" aria-labelledby="numbers-heading">

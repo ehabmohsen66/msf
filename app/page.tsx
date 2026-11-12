@@ -2,7 +2,6 @@
 
 import { useEffect, useState, useRef } from 'react';
 import WorldMap from '@/components/world-map';
-import ActivityReport from '@/components/activity-report';
 import MedicalTopics from '@/components/medical-topics';
 import CareersIntro from '@/components/careers-intro';
 import InFocus from '@/components/in-focus';
@@ -236,7 +235,6 @@ return <>
     </button>
   </div>
 </section>
-<ActivityReport/>
 <section className="numbers-section" id="msf-in-numbers" aria-labelledby="numbers-heading"><div className="wrap">
 <div className="section-heading"><div><p className="eyebrow">Our global activities · 2025</p><h2 id="numbers-heading">MSF in Numbers</h2></div><a className="text-link" href="https://www.msf.org/international-activity-report-2025/2025-figures">Our activities in figures <ArrowRight size={20}/></a></div>
 <div className="figures-grid">{figuresData.map(f=><article className="figure-card" key={f.numericValue}><img src={f.image} alt={f.alt} loading="lazy"/><div><CountUpNumber targetValue={f.numericValue} duration={2200}/><p className="figure-label">{f.label}</p></div></article>)}</div>
